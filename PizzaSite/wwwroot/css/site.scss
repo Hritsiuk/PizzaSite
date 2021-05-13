@@ -1,0 +1,16 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+@import '_layout.scss';
+
+.back {
+    background-image: url(../images/pizza20.jpg);
+    background-size: cover;   
+    background-repeat: no-repeat;    
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -10;
+}
