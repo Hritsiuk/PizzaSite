@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PizzaSite.Data;
 using PizzaSite.Models;
 using System;
 using System.Collections.Generic;
@@ -12,14 +13,21 @@ namespace PizzaSite.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private ApplicationDbContext db;
+        public HomeController(ApplicationDbContext context)
         {
-            _logger = logger;
+            db = context;
+            User u=new User();
+            u.UserName = "Petrov";
+            u.PasswordHash = "123";
+            db.Users.Add(u);
+            db.SaveChangesAsync();
         }
 
         public IActionResult Index()
         {
+          
+            
             return View();
         }
 
