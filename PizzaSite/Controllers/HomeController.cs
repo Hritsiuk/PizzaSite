@@ -17,11 +17,7 @@ namespace PizzaSite.Controllers
         public HomeController(ApplicationDbContext context)
         {
             db = context;
-            User u=new User();
-            u.UserName = "Petrov";
-            u.PasswordHash = "123";
-            db.Users.Add(u);
-            db.SaveChangesAsync();
+           
         }
 
         public IActionResult Index()

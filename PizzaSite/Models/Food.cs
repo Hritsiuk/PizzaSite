@@ -7,6 +7,7 @@ namespace PizzaSite.Models
 {
     public class Food
     {
+        public Guid Id { get; set; }
         public string name { get; set; }
         public double price { get; set; }
         public string img { get; set; }
