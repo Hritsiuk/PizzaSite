@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using PizzaSite.Data.Repositories.Abstract;
 using PizzaSite.Models;
 using System;
@@ -8,37 +9,36 @@ using System.Threading.Tasks;
 
 namespace PizzaSite.Data.Repositories.EntityFramework
 {
-    public class EFDrinksItemsRepository : IDrinksItemsRepository
+    public class EFComponentsRepository : IComponentItemsRepository
     {
         private readonly ApplicationDbContext context;
 
-        public EFDrinksItemsRepository(ApplicationDbContext context)
+        public EFComponentsRepository(ApplicationDbContext context)
         {
             this.context = context;
         }
 
-        public IQueryable<Drinks> GetDrinksItems()
+        public IQueryable<Component> GetComponentsItems()
         {
-            return context.Drink;
+            return context.Component;
         }
 
-        public Drinks GetDrinksItemById(Guid id)
+        public Component GetComponentsItemById(Guid id)
         {
-            return context.Drink.FirstOrDefault(x => x.Id == id);
+            return context.Component.FirstOrDefault(x => x.Id == id);
         }
 
-        public void SaveDrinksItem(Drinks entity)
+        public void SaveComponentsItem(Component entity)
         {
             context.Entry(entity).State = EntityState.Added;// объект будет добавлен как новый
             context.SaveChanges();
         }
 
-        public void DeleteDrinksItem(string id)
+        public void DeleteComponentsItem(string id)
         {
-            context.Drink.Remove(new Drinks() { Id = Guid.Parse(id) });
+            context.Component.Remove(new Component() { Id = Guid.Parse(id) });
             context.SaveChanges();
         }
-
 
     }
 }

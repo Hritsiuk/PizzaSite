@@ -8,13 +8,18 @@ namespace PizzaSite.Data
 {
     public class DataManager
     {
-        public IFoodItemsRepository Items { get; set; }
-     
+        public IDrinksItemsRepository Drinks { get; set; }
+        public IPizzaItemsRepository Pizza { get; set; }
+        public ISaladItemsRepository Salad { get; set; }
+        public IComponentItemsRepository Component { get; set; }
 
-        public DataManager(IFoodItemsRepository ItemsRepository)
+        public DataManager(IDrinksItemsRepository DrinksRepository, IPizzaItemsRepository PizzaRepository,
+            ISaladItemsRepository SaladRepository,IComponentItemsRepository ComponentRepository)
         {
-           Items = ItemsRepository;
-           
+            Drinks = DrinksRepository;
+            Pizza = PizzaRepository;
+            Salad = SaladRepository;
+            Component = ComponentRepository;
         }
     }
 }

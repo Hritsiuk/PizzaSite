@@ -14,9 +14,10 @@ namespace PizzaSite.Controllers
         private readonly ApplicationDbContext bd;
         private readonly DataManager dataManager;
 
-        public ItemController(ApplicationDbContext context)
+        public ItemController(DataManager data, ApplicationDbContext context)
         {
             bd = context;
+            dataManager = data;
         }
 
         public IActionResult Create(string returnUrl)
@@ -34,12 +35,15 @@ namespace PizzaSite.Controllers
 
                 Guid guid = Guid.NewGuid();
                 model.Id = guid;
-                if(model.idproductcategory==1)
-                dataManager.Items.SaveFoodItem(new Pizza { Id = model.Id, name = model.name, price=model.price,img = model.img,size=model.size,components=model.components});
-                else if (model.idproductcategory == 0)
-                    dataManager.Items.SaveFoodItem(new Salad { Id = model.Id, name = model.name, price = model.price, img = model.img, components = model.components });
-                if (model.idproductcategory == -1)
-                    dataManager.Items.SaveFoodItem(new Drinks { Id = model.Id, name = model.name, price = model.price, img = model.img});
+
+                if (model.idproductcategory == 1)
+                    dataManager.Component.SaveComponentsItem(new Component { Id = model.Id, name = model.name, price = model.price, img = model.img});
+                else if (model.idproductcategory==2)
+                    dataManager.Pizza.SavePizzaItem(new Pizza { Id = model.Id, name = model.name, price=model.price,img = model.img,size=model.size,components=model.components});
+                else if (model.idproductcategory == 3)
+                    dataManager.Salad.SaveSaladItem(new Salad { Id = model.Id, name = model.name, price = model.price, img = model.img, components = model.components });
+                else if (model.idproductcategory == 4)
+                    dataManager.Drinks.SaveDrinksItem(new Drinks { Id = model.Id, name = model.name, price = model.price, img = model.img});
 
 
                 return RedirectToAction("Index");

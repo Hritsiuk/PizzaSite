@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PizzaSite.Data;
+using PizzaSite.Data.Repositories.Abstract;
+using PizzaSite.Data.Repositories.EntityFramework;
 using PizzaSite.Models;
 using System;
 using System.Collections.Generic;
@@ -28,12 +30,18 @@ namespace PizzaSite
         public void ConfigureServices(IServiceCollection services)
         {
 
-
-
-
-            string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
+            services.AddTransient<IDrinksItemsRepository, EFDrinksItemsRepository>();
+            services.AddTransient<IPizzaItemsRepository, EFPizzaItemsRepository>();
+            services.AddTransient<ISaladItemsRepository, EFSaladItemsRepository>();
+            services.AddTransient<IComponentItemsRepository, EFComponentsRepository>();
+            services.AddTransient<DataManager>();
             services.AddTransient<CurrentUModel>();
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+               options.UseSqlServer(
+                   Configuration.GetConnectionString("DefaultConnection")));
+
+           
             services.AddIdentity<User, IdentityRole>(options =>
              {
                  options.User.RequireUniqueEmail = true;
@@ -57,7 +65,8 @@ namespace PizzaSite
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                
+               
+
             }
             else
             {

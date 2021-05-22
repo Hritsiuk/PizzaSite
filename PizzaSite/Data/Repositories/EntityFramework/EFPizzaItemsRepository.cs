@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PizzaSite.Data.Repositories.EntityFramework
 {
-    public class EFPizzaItemsRepository : IFoodItemsRepository
+    public class EFPizzaItemsRepository : IPizzaItemsRepository
     {
         private readonly ApplicationDbContext context;
 
@@ -17,26 +17,26 @@ namespace PizzaSite.Data.Repositories.EntityFramework
             this.context = context;
         }
 
-        public IQueryable<Food> GetFoodItems()
+        public IQueryable<Pizza> GetPizzaItems()
         {
-            return context.Pizzas;
+            return context.Pizza;
         }
 
-        public Food GetFoodItemById(Guid id)
+        public Pizza GetPizzaItemById(Guid id)
         {
-            return context.Pizzas.FirstOrDefault(x => x.Id == id);
+            return context.Pizza.FirstOrDefault(x => x.Id == id);
         }
 
-        public void SaveFoodItem(object entity)
+        public void SavePizzaItem(Pizza entity)
         {
-            Pizza p = (Pizza)entity;
-            context.Entry(p).State = EntityState.Added;// объект будет добавлен как новый
+            context.Pizza.Add(entity);// объект будет добавлен как новый
             context.SaveChanges();
+         
         }
 
-        public void DeleteFoodItem(string id)
+        public void DeletePizzaItem(string id)
         {
-            context.Pizzas.Remove(new Pizza() { Id = Guid.Parse(id) });
+            context.Pizza.Remove(new Pizza() { Id = Guid.Parse(id) });
             context.SaveChanges();
         }
 
