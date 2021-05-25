@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PizzaSite.Models
 {
-    public class User :IdentityUser
+    public class User : IdentityUser
     {
 
         public string Position { get; set; }

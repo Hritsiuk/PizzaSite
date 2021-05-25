@@ -7,6 +7,6 @@ namespace PizzaSite.Models
 {
     public class Salad : Food
     {
-        public Component component { get; set; }
+        public Component components { get; set; }
     }
 }

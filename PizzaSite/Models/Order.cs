@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace PizzaSite.Models
 {
-    public class Food
+     public class Order
     {
         public Guid Id { get; set; }
-        public string name { get; set; }
-        public double price { get; set; }
-        public string img { get; set; }
-        
+
+        public User user { get; set; }
+
+        public List<Food> foods { get; set; }
     }
 }
