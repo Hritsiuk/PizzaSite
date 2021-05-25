@@ -17,6 +17,8 @@
             <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
             <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
             <li><a asp-area="" asp-controller="Item" asp-action="Create">Add item</a></li>
+            <li><a asp-area="" asp-controller="Item" asp-action="Create" onclick="checkCookie()">Add item</a></li>
+
         </ul>
     </div>
 
@@ -41,6 +43,8 @@
     </div>
 
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/js.js" asp-append-version="true"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 
