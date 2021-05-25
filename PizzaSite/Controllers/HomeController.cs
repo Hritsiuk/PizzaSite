@@ -25,12 +25,15 @@ namespace PizzaSite.Controllers
         }
 
         public IActionResult Index()
-        {
-          
+        {         
             
             return View();
         }
 
+        public IActionResult About()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
