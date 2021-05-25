@@ -6,10 +6,12 @@
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
+    <Content Remove="Views\Home\About.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="Views\Home\About.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
