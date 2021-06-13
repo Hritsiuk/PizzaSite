@@ -1,49 +1,375 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>@ViewData["Title"] - PizzaSite</title>
 
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Pizza Chef</title>
+    <meta name="description" content="Pizza Chef">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta property="og:title" content="Pizza Chef">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="#">
+    <meta property="og:image" content="#">
+    <meta property="og:site_name" content="Pizza Chef">
+    <link href="~/images/favicon.png" rel="icon">
+    <link rel="stylesheet" type="text/css" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/css/jquery.bxslider.css">
+    <link rel="stylesheet" type="text/css" href="~/css/colorbox.css">
+    <link href="~/css/fonts.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/css/product_slider.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="~/css/product_tabs.css" media="screen">
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.cycle.js"></script>
+
+
+
+
     <link rel="stylesheet" href="~/css/site.css" />
+
 </head>
 <body>
     <div id="navigate">
         <ul>
             <li><a asp-controller="Home" asp-action="Index">Some pizza</a></li>
-            <li><a asp-controller="Home" asp-action="Menu">Меню</a></li>
+            <li><a asp-controller="Home" asp-action="Pizza">Pizza</a></li>
             <li><a asp-controller="Home" asp-action="Info">Інфо</a></li>
             <li><a asp-controller="Home" asp-action="About">Про нас</a></li>
             <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
             <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
             <li><a asp-area="" asp-controller="Item" asp-action="Create">Add item</a></li>
-            <li><a asp-area="" asp-controller="Item" asp-action="Create" onclick="checkCookie()">Add item</a></li>
+           
 
         </ul>
     </div>
+
+
+
+
+    <div class="wrap">
+        <!-- top panel -->
+        <div class="navbar navbar-inverse navbar-fixed-top topbar">
+            <div class="container">
+
+                <!-- cart -->
+                <div id="cart" >
+    <div class="heading">
+        <a title="Shopping Cart"  asp-controller="Home" asp-action="Scart">
+            <span id="cart-total">
+                <i class="fa fa-shopping-cart fa-lg"></i>&nbsp;
+                <span class="hidden-xs">0 item(s) - 0.00 $</span>
+            </span>
+        </a>
+    </div>
+
+    @*<div class="content">
+        <div class="inner">
+            <div class="empty">Your shopping cart is empty!</div>
+        </div>
+    </div>*@
+
+</div>
+
+                <!-- language -->
+            
+
+                <!-- menu -->
+                <div id="menu" class="menu-container">
+                    <button type="button" class="menu-toggle" data-toggle="collapse" data-target="#menu-mobile">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <div class="collapse menu-collapse" id="menu-mobile">
+                        <ul class="nav nav-pills">
+                            <li><a asp-controller="Home" asp-action="PizzaV">Pizza</a></li>
+                            <li>
+                                <a href="japan.html">Japan <i class="fa fa-angle-down"></i></a>
+                                <div>
+                                    <div class="arrow"></div>
+                                    <ul>
+                                        <li><a href="rolli.html">Rolls (6)</a></li>
+                                        <li><a href="rolli.html">Warm rolls (3)</a></li>
+                                        <li><a href="rolli.html">Sushi (5)</a></li>
+                                        <li><a href="rolli.html">Spicy-sushi (3)</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a asp-controller="Home" asp-action="Beverages">Beverages</a></li>
+                            <li class="links">
+                                <ul>
+                                    <li>
+                                        <a href='javascript:void(0);'>Custom block</a>
+                                        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#footer">Pages</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="divider hidden-sm hidden-xs"></div>
+
+            </div>
+        </div>
+        <!-- //top panel -->
+        <!-- header -->
+        <div class="header">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="social hidden-xs">
+                            <a href="#" target="_blank" title="Pizza Chef Dribbble">
+                                <span class="fa fa-dribbble"></span>
+                            </a>
+                            <a href="#" target="_blank" title="Pizza Chef Facebook">
+                                <span class="fa fa-facebook"></span>
+                            </a>
+                            <a href="#" target="_blank" title="Pizza Chef Flickr">
+                                <span class="fa fa-flickr"></span>
+                            </a>
+                            <a href="#" target="_blank" title="Pizza Chef Google+">
+                                <span class="fa fa-google-plus"></span>
+                            </a>
+                            <a href="#" target="_blank" title="Pizza Chef Instagram">
+                                <span class="fa fa-instagram"></span>
+                            </a>
+                            <a href="#" target="_blank" title="Pizza Chef LinkedIn">
+                                <span class="fa fa-linkedin"></span>
+                            </a>
+                            <a href="#" target="_blank" title="Pizza Chef Pinterest">
+                                <span class="fa fa-pinterest"></span>
+                            </a>
+                            <a href="#" target="_blank" title="Pizza Chef Tumblr">
+                                <span class="fa fa-tumblr"></span>
+                            </a>
+                            <a href="#" target="_blank" title="Pizza Chef Twitter">
+                                <span class="fa fa-twitter"></span>
+                            </a>
+                            <a href="#" target="_blank" title="Pizza Chef Vimeo">
+                                <span class="fa fa-vimeo-square"></span>
+                            </a>
+                            <a href="#" target="_blank" title="Pizza Chef Vkontakte">
+                                <span class="fa fa-vk"></span>
+                            </a>
+                            <a href="#" target="_blank" title="Pizza Chef YouTube">
+                                <span class="fa fa-youtube"></span>
+                            </a>
+                        </div>
+
+                        <div class="header-left">
+                            <div id="address">
+                                <p><strong>Hours of operation:</strong></p>
+                                <p>mon.-fr. <strong>10:00 - 18:00</strong>, sat.-sun. <strong>9:00 - 19:00</strong></p>
+                            </div>
+                            <div id="phone"><span>(817)</span> 234-34-34</div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div id="logo">
+                            <a href="index.html"><img src="~/images/logo_pizza.png" title="Pizza Chef" alt="Pizza Chef"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div id="search">
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control" placeholder="Search" value="">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default button-search" type="button"><span class="fa fa-search"></span></button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="header-right">
+                            <div id="welcome">
+                                Welcome visitor you can <a href="login.html">login</a> or <a href="create-account.html">create an account</a>.
+                            </div>
+
+                            <div class="links">
+                                <a id="wishlist-total" href="javascript:void(0);">
+                                    <i class="fa fa-heart-o"></i> Wish List (0)
+                                </a><br>
+                                <a id="link-cart" asp-controller="Home" asp-action="Scart">
+                                    <i class="fa fa-shopping-cart"></i> Shopping Cart
+                                </a><br>
+                               
+                                <a id="link-checkout" href="checkout.html">
+                                    <i class="fa fa-credit-card"></i> Checkout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //header -->
+
+        <div id="container" class="content">
+            <div class="container">
+                <div id="notification"></div>
+
+                <div id="content">
+
+
+
+
+                    <!-- ------------------------------------------------------------------------------- -->
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
     @RenderBody()
 
-    <div id="nbottom">
-        <ul>
-            <li><img src="~/images/delivery3.png" height="50" width="50"></li>
-            <li>
-                <p>Самовивіз</p>
-                <p>Самовиніс</p>
-                <p>Glovo</p>
-            </li>
-            <li><img src="~/images/payment.png" height="50" width="50"></li>
-            <li>
-                <p>Готівка</p>
-                <p>Картка</p>
-                <p>Перерахунок</p>
-            </li>
-        </ul>
+
+    <div id="footer" class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="column">
+                        <h4>Information</h4>
+                        <ul>
+                            <li><a href="about-us.html">About Us</a></li>
+                            <li><a href="about-us2.html">Wide page</a></li>
+                            <li><a href="about-us3.html">Right column</a></li>
+                            <li><a href="typography.html">Typography </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="column">
+                        <h4>Customer Service</h4>
+                        <ul>
+                            <li><a href="contact-us.html">Contact Us</a></li>
+                            <li><a href="request-return.html">Returns</a></li>
+                            <li><a href="sitemap.html">Site Map</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="column">
+                        <h4>Extras</h4>
+                        <ul>
+                            <li><a href="brands.html">Brands</a></li>
+                            <li><a href="vouchers.html">Gift Vouchers</a></li>
+                            <li><a href="haffiliates.html">Affiliates</a></li>
+                            <li><a href="search.html">Search</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="column">
+                        <h4>My Account</h4>
+                        <ul>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="create-account.html">Register</a></li>
+                            <li><a href="forgot-password.html">Password</a></li>
+                            <li><a href="shopping-cart.html">Cart</a></li>
+                            <li><a href="checkout.html">Checkout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-9 ">
+                    <div id="about">
+                        <h3>Order pizza online</h3>
+                        <p>
+                            <span id="result_box" lang="en">
+                                <span class="hps">You are welcome to site</span>
+                                <span class="hps">of pizza </span>
+                                <span class="hps">and Japanese cuisine</span>
+                                <span class="hps">in your city.</span>
+                                <span class="hps">Here you always</span>
+                                <span class="hps">can order&nbsp;</span>
+                                <span class="hps">pizza,</span>
+                                <span class="hps">sushi, rolls</span>
+                                <span class="hps">and beverages for home delivery.</span>
+                                <span class="hps">Pepperoni</span>
+                                <span>,</span>
+                                <span class="hps">Margarita</span>
+                                <span>, 4</span>
+                                <span class="hps">cheese</span>
+                                <span class="hps">and others.</span>
+                                <span class="hps">In the menu</span>
+                                <span class="hps">of Japanese cuisine</span>
+                                <span class="hps">you can order</span>
+                                <span class="hps">sushi with</span>
+                                <span class="hps">salmon and eel</span>
+                                <span>, classic</span>
+                                <span class="hps">California</span>
+                                <span class="hps">and</span>
+                                <span class="hps">Philadelphia </span>
+                            </span>
+                            <span id="result_box" lang="en">
+                                <span class="hps">rolls</span>
+                                <span>,</span>
+                                <span class="hps">as well as</span>
+                                <span class="hps">warm rolls</span>
+                                <span class="hps">Tempura</span>
+                                <span>.</span>
+                                <span class="hps">You will be pleased</span>
+                                <span class="hps">with the</span>
+                                <span class="hps">new </span>
+                                <span class="hps">sushi</span>
+                                <span class="hps">with spicy and</span>
+                                <span class="hps">fragrant sauce</span>
+                                <span>.</span>
+                                <span class="hps">Free</span>
+                                <span class="hps">pizza </span>
+                            </span>
+                            <span id="result_box" lang="en">
+                                <span class="hps">and Japanese cuisine </span>
+                                <span>delivery</span>
+                                <span> in your city </span>
+                                <span class="hps">.</span>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-3 text-right">
+                    <div id="powered">
+                        <a href="http://conceptlogic.org/" title="Website design, ecommerce development">Designed by Concept Logic</a>
+                        <br>
+                        Pizza Chef © 2014
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
+
+
+
 
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/js.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="~/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="~/js/jquery.colorbox.js"></script>
+    <script type="text/javascript" src="~/js/common.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

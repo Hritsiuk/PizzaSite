@@ -29,11 +29,12 @@ namespace PizzaSite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            
             services.AddTransient<IDrinksItemsRepository, EFDrinksItemsRepository>();
             services.AddTransient<IPizzaItemsRepository, EFPizzaItemsRepository>();
             services.AddTransient<ISaladItemsRepository, EFSaladItemsRepository>();
             services.AddTransient<IComponentItemsRepository, EFComponentsRepository>();
+            
             services.AddTransient<DataManager>();
             services.AddTransient<CurrentUModel>();
 

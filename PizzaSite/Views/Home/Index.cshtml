@@ -1,21 +1,651 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<div class="back">
-    
+<div id="container" class="content">
+    <div class="container">
+        <div id="notification"></div>
 
-    <div class="site_body">
-    </div>
+        <div id="content">
+            <div class="box product-slider clearfix">
 
-    <div class="site_footer">
-        <div class="delivery">
-            <div class="delivery_car"/>
-            <div class="delivery_method">
-                <ul>
-                    <li>
+                <div class="banner clearfix pull-right" style="width: 200px">
+                    <div class="item pull-left">
+                        <a href="pizza.html">
+                            <img src="~/images/data-banners-03-200x140.jpg" alt="Hot" title="Hot">
+                        </a>
+                        <br>
+                    </div>
+                    <div class="item pull-left">
+                        <a href="pizza.html">
+                            <img src="~/images/data-banners-07-200x140.jpg" alt="Special" title="Special">
+                        </a>
+                        <br>
+                    </div>
+                </div>
 
-                    </li>
-                </ul>                
+                <div class="box-content hidden-xs" style="margin-right: 250px;">
+                    <div class="bx-wrapper">
+                        <div class="bx-viewport">
+                            <div id="product-slider-0">
+                                <div class="slide-item">
+                                    <div class="si-image">
+                                        <a href="margarita.html">
+                                            <img src="~/images/data-pizza-margarita-300x300.jpg" alt="Margarita">
+                                        </a>
+                                    </div>
+
+                                    <div class="si-caption">
+                                        <div class="si-title">
+                                            <a href="margarita.html">Margarita</a>
+                                        </div>
+
+                                        <div class="si-desc">
+                                            <span>
+                                                All lovers of Italian cuisine know that the Pizza Margarita is the culinary embodiment of Italy. Classic cake flavored with mozzarella and red tomatoes.
+                                            </span>
+                                        </div>
+
+                                        <div class="si-rating rating">
+                                            <div class="stars" title="Based on 3 reviews.">
+                                                <i class="fa fa-star"></i>&nbsp;
+                                                <i class="fa fa-star"></i>&nbsp;
+                                                <i class="fa fa-star"></i>&nbsp;
+                                                <i class="fa fa-star"></i>&nbsp;
+                                                <i class="fa fa-star-o"></i>&nbsp;
+                                            </div>
+                                        </div>
+
+                                        <div class="si-price price">
+                                            <div><span class="price-fixed">270.00 $</span></div>
+                                        </div>
+
+                                        <div class="si-buy cart">
+                                            <button onclick="addToCart(&#39;44&#39;);" type="button" class="btn btn-success">
+                                                <span>Buy now</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slide-item">
+                                    <div class="si-image">
+                                        <a href="margarita.html">
+                                            <img src="~/images/data-pizza-pizza-diablo-300x300.jpg" alt="Diablo">
+                                        </a>
+                                    </div>
+
+                                    <div class="si-caption">
+                                        <div class="si-title">
+                                            <a href="margarita.html">Diablo</a>
+                                        </div>
+
+                                        <div class="si-desc">
+                                            <span>
+                                                Spicy, piquant and very rich. Hunter sausage, salami, hot pepper jalapenos. Pizza can be served as main dish, and it can be also a wonderful appetiser.
+                                            </span>
+                                        </div>
+
+                                        <div class="si-rating rating">
+                                            <div class="stars" title="Based on 1 reviews.">
+                                                <i class="fa fa-star"></i>&nbsp;
+                                                <i class="fa fa-star"></i>&nbsp;
+                                                <i class="fa fa-star"></i>&nbsp;
+                                                <i class="fa fa-star"></i>&nbsp;
+                                                <i class="fa fa-star"></i>&nbsp;
+                                            </div>
+                                        </div>
+
+                                        <div class="si-price price">
+                                            <div><span class="price-fixed">270.00 $</span></div>
+                                        </div>
+
+                                        <div class="si-buy cart">
+                                            <button onclick="addToCart(&#39;6822&#39;);" type="button" class="btn btn-success">
+                                                <span>Buy now</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slide-item">
+                                    <div class="si-image">
+                                        <a href="margarita.html">
+                                            <img src="~/images/data-pizza-kavkaz-300x300.jpg" alt="Caucasian">
+                                        </a>
+                                    </div>
+
+                                    <div class="si-caption">
+                                        <div class="si-title">
+                                            <a href="margarita.html">Caucasian</a>
+                                        </div>
+
+                                        <div class="si-desc">
+                                            <span>
+                                                Substantial beef pizza is topped with red onion rings and tomatoes. It will satisfy the hunger of the real gormandizer.
+                                            </span>
+                                        </div>
+
+                                        <div class="si-price price">
+                                            <div><span class="price-fixed">300.00 $</span></div>
+                                        </div>
+
+                                        <div class="si-buy cart">
+                                            <button onclick="addToCart(&#39;6816&#39;);" type="button" class="btn btn-success">
+                                                <span>Buy now</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slide-item">
+                                    <div class="si-image">
+                                        <a href="margarita.html">
+                                            <img src="~/images/data-rolls-rolls-maki-losos-ugor-300x300.jpg" alt="Rolls Minnesota">
+                                        </a>
+                                    </div>
+
+                                    <div class="si-caption">
+                                        <div class="si-title">
+                                            <a href="margarita.html">Rolls Minnesota</a>
+                                        </div>
+
+                                        <div class="si-desc">
+                                            <span>
+                                                Fundamentally new approach to the making of the famous Philadelphia roll. On-site salmon smoked eel is placed, we added to the cucumber slices of exotic avocado, and alsoo we mixed fancy red fish w..
+                                            </span>
+                                        </div>
+
+
+                                        <div class="si-price price">
+                                            <div><span class="price-fixed">250.00 $</span></div>
+                                        </div>
+
+                                        <div class="si-buy cart">
+                                            <button onclick="addToCart(&#39;6829&#39;);" type="button" class="btn btn-success">
+                                                <span>Buy now</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slide-item">
+                                    <div class="si-image">
+                                        <a href="margarita.html">
+                                            <img src="~/images/data-rolls-sushi-ikra-300x300.jpg" alt="Sushi with red caviar">
+                                        </a>
+                                    </div>
+
+                                    <div class="si-caption">
+                                        <div class="si-title">
+                                            <a href="margarita.html">Sushi with red caviar</a>
+                                        </div>
+
+                                        <div class="si-desc">
+                                            <span>
+                                                Traditional gunkan with red caviar.
+                                            </span>
+                                        </div>
+
+                                        <div class="si-price price">
+                                            <div><span class="price-fixed">80.00 $</span></div>
+                                        </div>
+
+                                        <div class="si-buy cart">
+                                            <button onclick="addToCart(&#39;6836&#39;);" type="button" class="btn btn-success">
+                                                <span>Buy now</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="bx-controls bx-has-pager bx-has-controls-direction">
+                            <div class="bx-pager bx-default-pager"></div>
+                            <div class="bx-controls-direction" id="bx-controls-direction"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="banner0" class="banner clearfix">
+                    <div class="item pull-left">
+                        <a href="pizza.html">
+                            <img src="~/images/data-banners-05-358x251.jpg" alt="Only vegetable" title="Only vegetable">
+                        </a>
+                    </div>
+                    <div class="item pull-left">
+                        <a href="pizza.html">
+                            <img src="~/images/data-banners-04-358x251.jpg" alt="4 chees" title="4 chees">
+                        </a>
+                    </div>
+                    <div class="item pull-left">
+                        <a href="pizza.html">
+                            <img src="~/images/data-banners-06-358x251.jpg" alt="Fresh basil" title="Fresh basil">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="box">
+
+                    <ul id="product-tabs-0" class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#product-tab-0-featured" data-toggle="tab">
+                                <span>Featured Products</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-tab-0-bestseller" data-toggle="tab">
+                                <span>Bestsellers</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-tab-0-latest" data-toggle="tab">
+                                <span>Latest</span>
+                            </a>
+                        </li>
+                    </ul>
+
+
+                    <div class="box-content tab-content" id="product-slideshow0">
+
+                        <div class="box-product product-grid tab-pane fade in active" id="product-tab-0-featured">
+                            <!-- Begin box-product div -->
+                            <div class="item">
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img src="~/images/data-pizza-margarita-240x240.jpg" alt="Margarita" width="240" height="240">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="margarita.html">Margarita</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">270.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="rating">
+                                        <div class="stars" title="Based on 3 reviews.">
+                                            <i class="fa fa-star"></i>&nbsp;
+                                            <i class="fa fa-star"></i>&nbsp;
+                                            <i class="fa fa-star"></i>&nbsp;
+                                            <i class="fa fa-star"></i>&nbsp;
+                                            <i class="fa fa-star-o"></i>&nbsp;
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button onclick="addToCart(&#39;44&#39;);" type="button" class="btn btn-success">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Begin box-product div -->
+                            <div class="item">
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img src="~/images/data-pizza-pizza-diablo-240x240.jpg" alt="Diablo" width="240" height="240">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="margarita.html">Diablo</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">270.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="rating">
+                                        <div class="stars" title="Based on 1 reviews.">
+                                            <i class="fa fa-star"></i>&nbsp;
+                                            <i class="fa fa-star"></i>&nbsp;
+                                            <i class="fa fa-star"></i>&nbsp;
+                                            <i class="fa fa-star"></i>&nbsp;
+                                            <i class="fa fa-star"></i>&nbsp;
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button onclick="addToCart(&#39;6822&#39;);" type="button" class="btn btn-success">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Begin box-product div -->
+                            <div class="item">
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img src="~/images/data-rolls-rolls-filadelfia-240x240.jpg" alt="Rolls Philadelphia" width="240" height="240">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="margarita.html">Rolls Philadelphia</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">250.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button onclick="addToCart(&#39;6827&#39;);" type="button" class="btn btn-success">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Begin box-product div -->
+                            <div class="item">
+
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img src="~/images/data-rolls-sushi-ikra-240x240.jpg" alt="Sushi with red caviar" width="240" height="240">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="margarita.html">Sushi with red caviar</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">80.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button onclick="addToCart(&#39;6836&#39;);" type="button" class="btn btn-success">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-product product-grid tab-pane fade" id="product-tab-0-bestseller">
+                            <!-- Begin box-product div -->
+                            <div class="item">
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img src="~/images/data-drinks-j7-240x240.jpg" alt="Juice J7" width="240" height="240">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="margarita.html">Juice J7</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">95.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button onclick="addToCart(&#39;6845&#39;);" type="button" class="btn btn-success">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Begin box-product div -->
+                            <div class="item">
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img src="~/images/data-drinks-sok-240x240.jpg" alt="Juice Fruit Garden" width="240" height="240">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="margarita.html">Juice Fruit Garden</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">55.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button onclick="addToCart(&#39;6844&#39;);" type="button" class="btn btn-success">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Begin box-product div -->
+                            <div class="item">
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img src="~/images/data-pizza-siri-240x240.jpg" alt="4 cheeses" width="240" height="240">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="margarita.html">4 cheeses</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">270.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button onclick="addToCart(&#39;6815&#39;);" type="button" class="btn btn-success">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Begin box-product div -->
+                            <div class="item">
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img src="~/images/data-pizza-margarita-240x240.jpg" alt="Margarita" width="240" height="240">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="http://chef.erpshop.ru/pizza/margarita">Margarita</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">270.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="rating">
+                                        <div class="stars" title="Based on 3 reviews.">
+                                            <i class="fa fa-star"></i>&nbsp;
+                                            <i class="fa fa-star"></i>&nbsp;
+                                            <i class="fa fa-star"></i>&nbsp;
+                                            <i class="fa fa-star"></i>&nbsp;
+                                            <i class="fa fa-star-o"></i>&nbsp;
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button onclick="addToCart(&#39;44&#39;);" type="button" class="btn btn-success">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-product product-grid tab-pane fade" id="product-tab-0-latest">
+
+                            <!-- Begin box-product div -->
+                            <div class="item">
+
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img src="~/images/data-drinks-sprite-240x240.jpg" alt="Sprite" width="240" height="240">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="margarita.html">Sprite</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">70.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button onclick="addToCart(&#39;6852&#39;);" type="button" class="btn btn-success">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Begin box-product div -->
+                            <div class="item">
+
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img src="~/images/data-drinks-fanta-240x240.jpg" alt="Fanta" width="240" height="240">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="margarita.html">Fanta</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">70.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button onclick="addToCart(&#39;6850&#39;);" type="button" class="btn btn-success">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Begin box-product div -->
+                            <div class="item">
+
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img src="~/images/data-drinks-coca-240x240.jpg" alt="Coca-cola" width="240" height="240">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="margarita.html">Coca-cola</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">70.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button onclick="addToCart(&#39;6848&#39;);" type="button" class="btn btn-success">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Begin box-product div -->
+                            <div class="item">
+
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img src="~/images/data-drinks-voda-negaz-240x240.jpg" alt="Mineral Water Lipetski Buvet wit.." width="240" height="240">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="margarita.html">Mineral Water Lipetski Buvet wit..</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">45.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button onclick="addToCart(&#39;6847&#39;);" type="button" class="btn btn-success">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel">
+                    <div class="bx-wrapper">
+                        <div class="bx-viewport">
+                            <ul id="carousel0" class="slider">
+                                <li>
+                                    <a class="item" href="drinks-dostavka.html">
+                                        <img src="~/images/data-banners-napitki-vologda-180x180.jpg" alt="Beverages" title="Beverages">
+                                        <div class="caption">Beverages</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="item" href="pizza.html">
+                                        <img src="~/images/data-banners-italy-180x180.jpg" alt="Italian cuisine" title="Italian cuisine">
+                                        <div class="caption">Italian cuisine</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="item" href="japan.html">
+                                        <img src="~/images/data-banners-jap-180x180.jpg" alt="Japanese cuisine" title="Japanese cuisine">
+                                        <div class="caption">Japanese cuisine</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bx-controls bx-has-controls-direction">
+                            <div class="bx-controls-direction" id="bx-controls-direction2"></div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

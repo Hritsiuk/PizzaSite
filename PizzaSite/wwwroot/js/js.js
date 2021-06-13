@@ -23,14 +23,71 @@ function getCookie(cname) {
     return "";
   }
   
-function checkCookie() {
-    var user=getCookie("username");
+function checkCookie(pname,pcount, pidt) {
+    var user = getCookie("username");
+    var json;
     if (user != "") {
-      alert("Welcome again " + user);
-    } else {
-       user = prompt("Please enter your name:","");
-       if (user != "" && user != null) {
-         setCookie("username", user, 30);
-       }
+        json = JSON.parse(user);
+        json.arr.push({ name: pname, count: pcount, idt: pidt});
+        user = JSON.stringify(json);
+
     }
-  }
+    else {
+        
+
+        user = {
+
+            arr: []
+        };
+
+        user.arr.push({ name: pname, count: pcount, idt: pidt});
+        json = JSON.stringify(user);
+
+       
+
+        user = json;
+    }
+        
+       
+        console.log(json);
+       
+        
+        
+        
+        console.log(user);
+        
+        if (user != "" && user != null) {
+            setCookie("username", user, 30);
+
+            
+        }
+    
+}
+
+
+function delelementbyid(id)
+{
+    
+    var temp = getCookie("username");
+    console.log(temp.arr[0].name);
+    for (var i = 0; i <3; i++) {
+
+        if (temp.arr[i].name===id) {
+            arr.splice(i, 1);
+            i--;
+        }
+
+    }
+    console.log(temp);
+    var user = JSON.stringify(temp);
+    console.log(user);
+    setCookie("username", user, 30);
+}
+
+function del(btn,id) {
+
+
+
+    btn.parentElement.parentElement.parentElement.parentElement.remove();
+    delelementbyid(id);
+}

@@ -1,0 +1,328 @@
+﻿@using PizzaSite.Models
+@model IQueryable<Pizza>
+    @{
+    ViewData["Title"] = "Pizza";
+    }
+
+
+    <div id="container" class="content">
+        <div class="container">
+            <div id="notification"></div>
+            <div id="column-left" class="hidden-xs hidden-sm">
+                <div class="box">
+                    <div class="box-heading">
+                        <span>Categories</span>
+                    </div>
+                    <div class="box-content">
+                        <ul class="box-category treemenu">
+                            <li><a href="pizza.html" class="active"><span>Pizza (10)</span></a></li>
+                            <li>
+                                <a href="japan.html"><span>Japan (17)</span></a>
+                                <ul>
+                                    <li><a href="rolli.html"><span>Rolls (6)</span></a></li>
+                                    <li><a href="teplie-rolli.html"><span>Warm rolls (3)</span></a></li>
+                                    <li><a href="sushi.html"><span>Sushi (5)</span></a></li>
+                                    <li><a href="spicy-sushi.html"><span>Spicy-sushi (3)</span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="drinks-dostavka.html"><span>Beverages (7)</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="banner0" class="banner clearfix">
+                    <div class="item pull-left">
+                        <a href="http://conceptlogic.ru/">
+                            <img src="~/images/data-banners-banner-cl-2-255x382.jpg" alt="E-commerce solutions" title="E-commerce solutions">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="box box-featured">
+                    <div class="box-heading">
+                        <span>Featured</span>
+                    </div>
+
+                    <div class="box-content">
+                        <div class="box-product product-grid">
+                            <div class="item">
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img alt="Margarita" title="Margarita" src="~/images/data-pizza-margarita-80x80.jpg">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="margarita.html">Margarita</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">270.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button class="btn btn-success" type="button" onclick="addToCart(&#39;44&#39;);">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="rating">
+                                        <div class="stars" title="Based on 3 reviews.">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>&nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img alt="Diablo" title="Diablo" src="~/images/data-pizza-pizza-diablo-80x80.jpg">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="margarita.html">Diablo</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">270.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button class="btn btn-success" type="button" onclick="addToCart(&#39;6822&#39;);">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="rating">
+                                        <div class="stars" title="Based on 1 reviews.">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img alt="Rolls Philadelphia" title="Rolls Philadelphia" src="~/images/data-rolls-rolls-filadelfia-80x80.jpg">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="margarita.html">Rolls Philadelphia</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">250.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button class="btn btn-success" type="button" onclick="addToCart(&#39;6827&#39;);">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="image">
+                                    <a href="margarita.html">
+                                        <img alt="Sushi with red caviar" title="Sushi with red caviar" src="~/images/data-rolls-sushi-ikra-80x80.jpg">
+                                    </a>
+                                </div>
+
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="margarita.html">Sushi with red caviar</a>
+                                    </div>
+
+                                    <div class="price">
+                                        <div>
+                                            <span class="price-fixed">80.00 $</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <button class="btn btn-success" type="button" onclick="addToCart(&#39;6836&#39;);">
+                                            <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content">
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="pizza.html">Pizza</a></li>
+                </ol>
+
+                <div class="category-info clearfix">
+                    <h1>Pizza</h1>
+                    <p>
+                        <span style="font-family: arial, sans-serif; font-size: 13px; line-height: 16px;">Pizza - </span><span id="result_box" lang="en"><span class="hps">Pizza</span> <span class="hps">-</span> <span class="hps">Italian</span> <span class="hps">national dish </span><span class="hps">in the shape of</span><span class="hps"> circular</span> open-faced flat cake <span class="hps">covered</span> <span class="hps">in the classic version with</span> <span class="hps">tomatoes and</span> <span class="hps">melted cheese</span><span>.</span> <span class="hps">Cheese is</span> <span class="hps">the main ingredient</span> <span class="hps">of pizza.</span> <span class="hps">One</span> <span class="hps">of the most popular</span> <span class="hps">dishes in the world</span><span>.</span></span>
+                    </p>
+                </div>
+
+
+                <div class="product-filter clearfix">
+                    <div class="display">
+                        <div class="btn-group btn-group-sm">
+                            <span class="btn btn-default" disabled="disabled"><i class="fa fa-th-list"></i> List</span>
+                            <a class="btn btn-default" onclick="display(&#39;grid&#39;);"><i class="fa fa-th"></i> Grid</a>
+                        </div>
+                    </div>
+
+                    <div class="product-compare">
+                        <a class="btn btn-default btn-sm" href="index.html" id="compare-total">
+                            <i class="fa fa-files-o"></i> Product Compare (0)
+                        </a>
+                    </div>
+
+                    <div class="limit">
+                        <div class="dropdown">
+                            <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="limit-goods" data-toggle="dropdown">
+                                <i class="fa fa-level-down"></i>&nbsp;Show:&nbsp;<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="limit-goods">
+                                <li class="disabled"><a tabindex="-1" href="#">20</a></li>
+                                <li><a tabindex="-1" href="#">25</a></li>
+                                <li><a tabindex="-1" href="#">50</a></li>
+                                <li><a tabindex="-1" href="#">75</a></li>
+                                <li><a tabindex="-1" href="#">100</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="sort">
+                        <div class="dropdown">
+                            <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="sort-goods" data-toggle="dropdown">
+                                <i class="fa fa-sort-amount-desc"></i>&nbsp;Sort By:&nbsp;<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="sort-goods">
+                                <li class="disabled"><a tabindex="-1" href="#">Default</a></li>
+                                <li><a tabindex="-1" href="#">Name (A - Z)</a></li>
+                                <li><a tabindex="-1" href="#">Name (Z - A)</a></li>
+                                <li><a tabindex="-1" href="#">Price (Low &gt; High)</a></li>
+                                <li><a tabindex="-1" href="#">Price (High &gt; Low)</a></li>
+                                <li><a tabindex="-1" href="#">Rating (Highest)</a></li>
+                                <li><a tabindex="-1" href="#">Rating (Lowest)</a></li>
+                                <li><a tabindex="-1" href="#">Model (A - Z)</a></li>
+                                <li><a tabindex="-1" href="#">Model (Z - A)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-product product-list">
+
+
+                    @foreach (Pizza item in Model)
+                    {
+
+                    <div class="item">
+                        <div class="image">
+                            <a href="~/Item/Detail/@item.Id">
+                                <img width="240" height="240" src="@item.img" title="Margarita" alt="Margarita">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <div class="name">
+                                <a href="~/Item/Detail/@item.Id">@item.name</a>
+                            </div>
+                            <div class="description">
+                                All lovers of Italian cuisine know that the Pizza Margarita is the culinary embodiment of Italy. Classic cake flavored with mozzarella and red tomatoes...
+                            </div>
+
+                            <div class="price">
+                                <div>
+                                    <span class="price-fixed">@item.price $</span>
+                                </div>
+                            </div>
+
+
+
+                            <div class="cart">
+                                <button class="btn btn-success" type="button" onclick="checkCookie('@item.Id', 1,2)">
+                                    <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                </button>
+
+                                <a class="btn btn-danger tooltip-right" title="" onclick="addToWishList(&#39;44&#39;);" data-original-title="Add to Wish List">
+                                    <i class="fa fa-heart-o"></i> <!--span>Add to Wish List</span-->
+                                </a>
+
+                                <a class="btn btn-link" onclick="addToCompare(&#39;44&#39;);">
+                                    <i class="fa fa-files-o"></i> <span>Add to Compare</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+
+
+
+                </div>
+
+                <div class="">
+                    <div class="pagination">
+                        <div class="results">Showing 1 to 10 of 10 (1 Pages)</div>
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                function display(view) {
+                    if (view == 'list') {
+                        $('#content .product-grid').attr('class', 'product-list box-product');
+                        $('.display').html('' +
+                            '<div class="btn-group btn-group-sm">' +
+                            '<span class="btn btn-default" disabled="disabled"><i class="fa fa-th-list"></i> List</span>' +
+                            '<a class="btn btn-default" onclick="display(\'grid\');"><i class="fa fa-th"></i> Grid</a>' +
+                            '</div>'
+                        );
+                        $.totalStorage('display', 'list');
+                    }
+                    else {
+                        $('#content .product-list').attr('class', 'product-grid box-product');
+                        $('.display').html('' +
+                            '<div class="btn-group btn-group-sm">' +
+                            '<a class="btn btn-default" onclick="display(\'list\');"><i class="fa fa-th-list"></i> List</a>' +
+                            '<span class="btn btn-default" disabled="disabled"><i class="fa fa-th"></i> Grid</span>' +
+                            '</div>'
+                        );
+                        $.totalStorage('display', 'grid');
+                    }
+                }
+                view = $.totalStorage('display');
+                if (view) {
+                    display(view);
+                } else {
+                    display('list');
+                }</script>
+        </div>
+    </div>
+

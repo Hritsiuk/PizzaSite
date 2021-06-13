@@ -12,11 +12,16 @@
   <ItemGroup>
     <None Include="compilerconfig.json" />
     <None Include="Views\Home\About.cshtml" />
+    <None Include="wwwroot\fonts\fontawesome-webfont862f.svg" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebPages" Version="3.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="RestSharp" Version="106.11.7" />
+    <PackageReference Include="WebGrease" Version="1.6.0" />
   </ItemGroup>
 
 </Project>

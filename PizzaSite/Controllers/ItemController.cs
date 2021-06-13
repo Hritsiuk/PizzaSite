@@ -46,10 +46,20 @@ namespace PizzaSite.Controllers
                     dataManager.Drinks.SaveDrinksItem(new Drinks { Id = model.Id, name = model.name, price = model.price, img = model.img});
 
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             return NotFound();
         }
+
+
+        [HttpGet]
+        public IActionResult Detail(string? id)
+        {
+           
+
+            return View(dataManager.Pizza.GetPizzaItemById(new Guid(id)));
+        }
+
 
     }
 }

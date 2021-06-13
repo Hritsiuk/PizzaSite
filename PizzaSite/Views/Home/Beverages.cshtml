@@ -1,0 +1,150 @@
+﻿@using PizzaSite.Models
+@model IQueryable<Drinks>
+@{
+    ViewData["Title"] = "Beverages";
+}
+<div id="container" class="content">
+    <div class="container">
+        <div id="notification"></div>
+
+        <div id="content">
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="drinks-dostavka.html">Beverages</a></li>
+            </ol>
+
+            <div class="category-info clearfix">
+                <h1>Beverages</h1>
+            </div>
+
+
+            <div class="product-filter clearfix">
+                <div class="display">
+                    <div class="btn-group btn-group-sm">
+                        <a class="btn btn-default" onclick="display(&#39;list&#39;);"><i class="fa fa-th-list"></i> List</a>
+                        <span class="btn btn-default" disabled="disabled"><i class="fa fa-th"></i> Grid</span>
+                    </div>
+                </div>
+
+                <div class="product-compare">
+                    <a class="btn btn-default btn-sm" href="index.html" id="compare-total">
+                        <i class="fa fa-files-o"></i> Product Compare (0)
+                    </a>
+                </div>
+
+                <div class="limit">
+                    <div class="dropdown">
+                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="limit-goods" data-toggle="dropdown">
+                            <i class="fa fa-level-down"></i>&nbsp;Show:&nbsp;<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="limit-goods">
+                            <li class="disabled"><a tabindex="-1" href="#">20</a></li>
+                            <li><a tabindex="-1" href="#">25</a></li>
+                            <li><a tabindex="-1" href="#">50</a></li>
+                            <li><a tabindex="-1" href="#">75</a></li>
+                            <li><a tabindex="-1" href="#">100</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sort">
+                    <div class="dropdown">
+                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="sort-goods" data-toggle="dropdown">
+                            <i class="fa fa-sort-amount-desc"></i>&nbsp;Sort By:&nbsp;<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="sort-goods">
+                            <li class="disabled"><a tabindex="-1" href="#">Default</a></li>
+                            <li><a tabindex="-1" href="#">Name (A - Z)</a></li>
+                            <li><a tabindex="-1" href="#">Name (Z - A)</a></li>
+                            <li><a tabindex="-1" href="#">Price (Low &gt; High)</a></li>
+                            <li><a tabindex="-1" href="#">Price (High &gt; Low)</a></li>
+                            <li><a tabindex="-1" href="#">Rating (Highest)</a></li>
+                            <li><a tabindex="-1" href="#">Rating (Lowest)</a></li>
+                            <li><a tabindex="-1" href="#">Model (A - Z)</a></li>
+                            <li><a tabindex="-1" href="#">Model (Z - A)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-product product-grid">
+
+                @foreach (Drinks item in Model)
+                {
+                    <div class="item">
+                        <div class="image">
+                            <a href="margarita.html">
+                                <img src="@item.img" title="Juice Fruit Garden" alt="Juice Fruit Garden">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <div class="name">
+                                <a href="margarita.html">@item.name</a>
+                            </div>
+                            <div class="description">
+                                Choice of juices 1 litre...
+                            </div>
+
+                            <div class="price">
+                                <div>
+                                    <span class="price-fixed">@item.price $</span>
+                                </div>
+                            </div>
+
+                            <div class="cart">
+                                <button class="btn btn-success" type="button" onclick="checkCookie('@item.Id', 1,4)">
+                                    <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
+                                </button>
+
+                                <a class="btn btn-danger tooltip-right" title="" onclick="addToWishList(&#39;6844&#39;);" data-original-title="Add to Wish List">
+                                    <i class="fa fa-heart-o"></i> <!--span>Add to Wish List</span-->
+                                </a>
+
+                                <a class="btn btn-link" onclick="addToCompare(&#39;6844&#39;);">
+                                    <i class="fa fa-files-o"></i> <span>Add to Compare</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                </div>
+
+            <div class="">
+                <div class="pagination">
+                    <div class="results">Showing 1 to 10 of 10 (1 Pages)</div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+    function display(view) {
+                if (view == 'list') {
+                    $('#content .product-grid').attr('class', 'product-list box-product');
+                    $('.display').html('' +
+                        '<div class="btn-group btn-group-sm">' +
+                        '<span class="btn btn-default" disabled="disabled"><i class="fa fa-th-list"></i> List</span>' +
+                        '<a class="btn btn-default" onclick="display(\'grid\');"><i class="fa fa-th"></i> Grid</a>' +
+                        '</div>'
+                    );
+                    $.totalStorage('display', 'list');
+                }
+                else {
+                    $('#content .product-list').attr('class', 'product-grid box-product');
+                    $('.display').html('' +
+                        '<div class="btn-group btn-group-sm">' +
+                        '<a class="btn btn-default" onclick="display(\'list\');"><i class="fa fa-th-list"></i> List</a>' +
+                        '<span class="btn btn-default" disabled="disabled"><i class="fa fa-th"></i> Grid</span>' +
+                        '</div>'
+                    );
+                    $.totalStorage('display', 'grid');
+                }
+            }
+            view = $.totalStorage('display');
+            if (view) {
+                display(view);
+            } else {
+                display('list');
+            }</script>
+    </div>
+</div>
