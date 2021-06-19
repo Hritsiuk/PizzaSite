@@ -18,6 +18,7 @@ namespace PizzaSite.Controllers
         {
             bd = context;
             dataManager = data;
+           
         }
 
         public IActionResult Create(string returnUrl)
@@ -53,7 +54,7 @@ namespace PizzaSite.Controllers
 
 
         [HttpGet]
-        public IActionResult Detail(string? id)
+        public IActionResult Detail(string id)
         {
            
 

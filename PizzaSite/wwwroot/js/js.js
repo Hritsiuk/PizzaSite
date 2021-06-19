@@ -23,7 +23,7 @@ function getCookie(cname) {
     return "";
   }
   
-function checkCookie(pname,pcount, pidt) {
+function checkCookie(pname,pcount, pidt,count,money) {
     var user = getCookie("username");
     var json;
     if (user != "") {
@@ -47,7 +47,10 @@ function checkCookie(pname,pcount, pidt) {
 
         user = json;
     }
-        
+    settotal(count, money)
+    {
+
+    }
        
         console.log(json);
        
@@ -69,17 +72,20 @@ function delelementbyid(id)
 {
     
     var temp = getCookie("username");
-    console.log(temp.arr[0].name);
+    var temp2 = JSON.parse(temp);
     for (var i = 0; i <3; i++) {
 
-        if (temp.arr[i].name===id) {
-            arr.splice(i, 1);
+        console.log(temp2);
+        console.log(temp2.arr[i]);
+        if (temp2?.arr[i]?.name === id) {
+           
+            temp2.arr.splice(i, 1);
             i--;
         }
 
     }
-    console.log(temp);
-    var user = JSON.stringify(temp);
+   
+    var user = JSON.stringify(temp2);
     console.log(user);
     setCookie("username", user, 30);
 }
@@ -90,4 +96,57 @@ function del(btn,id) {
 
     btn.parentElement.parentElement.parentElement.parentElement.remove();
     delelementbyid(id);
+}
+
+function redact() {
+    var user = getCookie("total");
+    var json=JSON.parse(user);
+
+    document.getElementById("totalcount").innerHTML = json.arr2[0].count;
+    document.getElementById("totalmoney").innerHTML = json.arr2[0].money;
+                                        
+}
+function settotal(count, money) {
+    var user = getCookie("total");
+    var json;
+    if (user != "") {
+        json = JSON.parse(user);
+        json.arr2[0].money += money;
+        json.arr2[0].count += count;
+
+
+        user = JSON.stringify(json);
+
+    }
+    else {
+
+
+        user = {
+
+            arr2: []
+        };
+
+        user.arr2.push({ count: count, money: money });
+        json = JSON.stringify(user);
+
+
+
+        user = json;
+    }
+
+
+    console.log(json);
+
+
+
+
+    console.log(user);
+
+    if (user != "" && user != null) {
+        setCookie("total", user, 30);
+        redact();
+
+    }
+
+
 }

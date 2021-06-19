@@ -1,0 +1,173 @@
+﻿@using PizzaSite.Models
+@model ICollection<Food>
+@{
+    ViewData["Title"] = "Checkout";
+}
+<div id="container" class="content">
+    <div class="container">
+        <div id="notification"></div>
+
+        <div id="content">
+
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shopping-cart.html">Shopping Cart</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+            </ol>
+
+            <div class="page-header">
+                <h1>Checkout</h1>
+            </div>
+
+            <div class="checkout panel-group">
+                <form>
+                    <div id="payment-method" class="panel panel-default">
+                        <div class="checkout-heading panel-heading">Step 1: Adress</div>
+                        <div class="checkout-content panel-body">
+                            <h4>Please enter your adress.</h4>
+
+
+                            <div class="form-group">
+                                <label>Add adress</label>
+                                <textarea name="comment" class="form-control" rows="1"></textarea>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                    <div id="payment-method" class="panel panel-default">
+                        <div class="checkout-heading panel-heading">Step 2: Contacts</div>
+                        <div class="checkout-content panel-body" style="display: none">
+                            <h4>Please enter your contacts</h4>
+
+
+                            <div class="form-group">
+                                <label>Add number</label>
+                                <textarea name="comment" class="form-control" rows="1"></textarea>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div id="payment-method" class="panel panel-default">
+                        <div class="checkout-heading panel-heading">Step 3: Payment Method</div>
+                        <div class="checkout-content panel-body" style="display: none">
+                            <h4>Please select the preferred payment method to use on this order.</h4>
+                            <div class="form-group">
+                                <label for="cod">
+                                    <input type="radio" name="payment_method" value="cod" id="cod" checked="checked">
+                                    Cash On Delivery
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Add Comments About Your Order</label>
+                                <textarea name="comment" class="form-control" rows="4"></textarea>
+                            </div>
+
+                            <div class="buttons">
+                                <div class="checkbox-inline">
+                                    <label>
+                                        <input type="checkbox" name="agree" value="1">
+                                        I have read and agree to the <a class="colorbox" href="http://chef.erpshop.ru/index.php?route=information/information/info&amp;information_id=5" alt="Terms &amp; Conditions"><b>Terms &amp; Conditions</b></a>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="confirm" class="panel panel-default">
+                        <div class="checkout-heading panel-heading">Step 4: Confirm Order</div>
+                        <div class="checkout-content panel-body" style="display: none">
+                            <div class="checkout-product table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="name">Product Name</th>
+                                            <th class="model">Model</th>
+                                            <th class="quantity">Quantity</th>
+                                            <th class="price">Price</th>
+                                            <th class="total">Total</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td class="name">
+                                                <a href="margarita.html">Margarita</a>
+                                                <br>
+                                                &nbsp;<small> — Pizza weight: 1200 grs</small>
+                                            </td>
+                                            <td class="model">Маргарита</td>
+                                            <td class="quantity">1</td>
+                                            <td class="price">$12.83</td>
+                                            <td class="total">$12.83</td>
+                                        </tr>
+                                    </tbody>
+
+                                    <tfoot>
+
+                                        <tr>
+                                            <td colspan="4" class="price text-right">
+                                                <b>Sub-Total:</b>
+                                            </td>
+                                            <td class="total">$12.83</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="price text-right">
+                                                <b>Flat Shipping Rate:</b>
+                                            </td>
+                                            <td class="total">$0.14</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="price text-right">
+                                                <b>Eco Tax (-2.00):</b>
+                                            </td>
+                                            <td class="total">$0.11</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="price text-right">
+                                                <b>НДС 18%:</b>
+                                            </td>
+                                            <td class="total">$2.33</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="price text-right">
+                                                <b>Total:</b>
+                                            </td>
+                                            <td class="total">$15.42</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <br>
+                            <div class="payment">
+                                <div class="buttons">
+                                    <input type="button" value="Confirm Order" id="button-confirm" class="btn btn-warning">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+
+            </div>
+
+            <script type="text/javascript">
+    $(document).on('click', '.checkout-heading', function () {
+                    $('.checkout-content').slideUp('slow');
+                    $(this).parent().find('.checkout-content').slideDown('slow');
+                });</script>
+
+
+
+
+        </div>
+    </div>
+
+</div>
+

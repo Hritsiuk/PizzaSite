@@ -33,20 +33,8 @@
     <link rel="stylesheet" href="~/css/site.css" />
 
 </head>
-<body>
-    <div id="navigate">
-        <ul>
-            <li><a asp-controller="Home" asp-action="Index">Some pizza</a></li>
-            <li><a asp-controller="Home" asp-action="Pizza">Pizza</a></li>
-            <li><a asp-controller="Home" asp-action="Info">Інфо</a></li>
-            <li><a asp-controller="Home" asp-action="About">Про нас</a></li>
-            <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
-            <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
-            <li><a asp-area="" asp-controller="Item" asp-action="Create">Add item</a></li>
-           
-
-        </ul>
-    </div>
+<body onload="redact()" >
+   
 
 
 
@@ -58,14 +46,37 @@
 
                 <!-- cart -->
                 <div id="cart" >
-    <div class="heading">
-        <a title="Shopping Cart"  asp-controller="Home" asp-action="Scart">
-            <span id="cart-total">
-                <i class="fa fa-shopping-cart fa-lg"></i>&nbsp;
-                <span class="hidden-xs">0 item(s) - 0.00 $</span>
-            </span>
-        </a>
-    </div>
+                    <div class="heading">
+                        <form asp-controller="Home" asp-action="Scart" method="get">
+                            <script>
+                                
+                                function setValue() {
+                                    document.getElementById('json').value = getCookie("username").toString();
+                                   
+                                    document.getElementById('submit').click();
+                                   
+                                }
+                                
+                                
+                            </script>
+                            <input type="text" hidden="hidden" id="json" name="json" value=""  />
+
+                            <button hidden="hidden" type="submit" id="submit" style="background-color: #f5ab1b;border:none ">
+                            </button>
+                                <a onclick="setValue()">
+
+                                    <span id="cart-total">
+                                        <i class="fa fa-shopping-cart fa-lg"></i>&nbsp;
+                                        
+                                        <span class="hidden-xs">(<i id="totalcount"></i>) item(s) - <i id="totalmoney">0.00</i> $</span>
+                                      
+                                    </span>
+
+                                </a>
+                            
+                        </form>
+                        
+                    </div>
 
     @*<div class="content">
         <div class="inner">

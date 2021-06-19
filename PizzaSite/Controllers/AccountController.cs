@@ -17,7 +17,8 @@ namespace PizzaSite.Controllers
         {
             userManager = userMgr;
             signInManager = signInMgr;
-         
+
+            
         }
         [AllowAnonymous]
         public IActionResult Login(string returnUrl)
@@ -59,32 +60,32 @@ namespace PizzaSite.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl)
         {
-            if (ModelState.IsValid)
-            {
-                User user = new User { UserName = model.UserName, Email = model.Email };
-                // добавляем пользователя
-                var result = await userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    // установка куки
-                    await signInManager.SignInAsync(user, false);
-                    return Redirect(returnUrl ?? "/");
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError(string.Empty, error.Description);
-                    }
-                }
-            }
-            return View(model);
+            //if (ModelState.IsValid)
+            //{
+            //    User user = new User { UserName = model.UserName, Email = model.Email };
+            //    // добавляем пользователя
+            //    var result = await userManager.CreateAsync(user, model.Password);
+            //    if (result.Succeeded)
+            //    {
+            //        // установка куки
+            //        await signInManager.SignInAsync(user, false);
+            //        return Redirect(returnUrl ?? "/");
+            //    }
+            //    else
+            //    {
+            //        foreach (var error in result.Errors)
+            //        {
+            //            ModelState.AddModelError(string.Empty, error.Description);
+            //        }
+            //    }
+            //}
+            return View(/*model*/);
         }
         [Authorize]
         public async Task<IActionResult> Logout()
         {
          
-            await signInManager.SignOutAsync();
+            //await signInManager.SignOutAsync();
 
             return RedirectToAction("Index", "Home");
         }
