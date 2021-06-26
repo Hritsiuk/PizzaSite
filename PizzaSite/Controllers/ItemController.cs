@@ -76,6 +76,7 @@ namespace PizzaSite.Controllers
             }
 
             List<object> list1 = new List<object>();
+            if(id.Length>30)
             list1.Add(dataManager.Pizza.GetPizzaItemById(new Guid(id)));
             list1.Add(dataManager.Component.GetComponentsItems().ToList<Component>());
 

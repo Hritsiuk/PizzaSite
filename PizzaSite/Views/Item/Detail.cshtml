@@ -78,7 +78,7 @@
                                 @foreach (Component c in components)
                                 {
                                     <label class="radio-inline">
-                                        <img src="@c.img" alt="with salmon +50.00 $"><br>
+                                        <img width="50" height="50" src="@c.img" alt="with salmon +50.00 $"><br>
                                         <input type="radio" name="option[239]" value="1" onclick="Set('@c.Id')">
                                         with @c.name
                                         <small>(+@c.price $)</small>
