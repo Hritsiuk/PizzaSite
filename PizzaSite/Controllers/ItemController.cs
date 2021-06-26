@@ -56,11 +56,42 @@ namespace PizzaSite.Controllers
         [HttpGet]
         public IActionResult Detail(string id)
         {
-           
+            List<Food> list = new List<Food>();
+            list.AddRange(dataManager.Pizza.GetPizzaItems());
+            list.AddRange(dataManager.Drinks.GetDrinksItems());
+            list.AddRange(dataManager.Salad.GetSaladItems());
+            foreach (Food temp in list)
+            {
+                if (temp.Id.ToString()==id)
+                {
+                    if (temp.GetType()== new Pizza().GetType())
+                        ViewBag.idt = 2;
+                    else if(temp.GetType() == new Salad().GetType())
+                        ViewBag.idt = 3;
+                    else if (temp.GetType() == new Drinks().GetType())
+                        ViewBag.idt = 4;
 
-            return View(dataManager.Pizza.GetPizzaItemById(new Guid(id)));
+
+                }
+            }
+
+            List<object> list1 = new List<object>();
+            list1.Add(dataManager.Pizza.GetPizzaItemById(new Guid(id)));
+            list1.Add(dataManager.Component.GetComponentsItems().ToList<Component>());
+
+
+            return View(list1);
         }
 
+        [HttpPost]
+        public IActionResult Detail(Comment comment)
+        {
+            Comment c = comment;
+            c.Id = new Guid();
+            bd.Commentaries.Add(c);
+            bd.SaveChanges();
 
+            return RedirectToAction("Detail", "Item");
+        }
     }
 }

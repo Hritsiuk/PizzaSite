@@ -78,15 +78,11 @@
                         
                     </div>
 
-    @*<div class="content">
-        <div class="inner">
-            <div class="empty">Your shopping cart is empty!</div>
-        </div>
-    </div>*@
+ 
 
 </div>
 
-                <!-- language -->
+               
             
 
                 <!-- menu -->
@@ -101,18 +97,7 @@
                     <div class="collapse menu-collapse" id="menu-mobile">
                         <ul class="nav nav-pills">
                             <li><a asp-controller="Home" asp-action="PizzaV">Pizza</a></li>
-                            <li>
-                                <a href="japan.html">Japan <i class="fa fa-angle-down"></i></a>
-                                <div>
-                                    <div class="arrow"></div>
-                                    <ul>
-                                        <li><a href="rolli.html">Rolls (6)</a></li>
-                                        <li><a href="rolli.html">Warm rolls (3)</a></li>
-                                        <li><a href="rolli.html">Sushi (5)</a></li>
-                                        <li><a href="rolli.html">Spicy-sushi (3)</a></li>
-                                    </ul>
-                                </div>
-                            </li>
+                            <li><a asp-controller="Home" asp-action="Salad">Salads</a></li>
                             <li><a asp-controller="Home" asp-action="Beverages">Beverages</a></li>
                             <li class="links">
                                 <ul>
@@ -187,10 +172,10 @@
 
                     <div class="col-sm-4">
                         <div id="logo">
-                            <a href="index.html"><img src="~/images/logo_pizza.png" title="Pizza Chef" alt="Pizza Chef"></a>
+                            <a asp-controller="Home" asp-action="Index"><img src="~/images/logo_pizza.png" title="Pizza Chef" alt="Pizza Chef"></a>
                         </div>
                     </div>
-
+                   
                     <div class="col-sm-4">
                         <div id="search">
                             <div class="input-group">
@@ -213,7 +198,7 @@
                                 <a id="link-cart" asp-controller="Home" asp-action="Scart">
                                     <i class="fa fa-shopping-cart"></i> Shopping Cart
                                 </a><br>
-                               
+
                                 <a id="link-checkout" href="checkout.html">
                                     <i class="fa fa-credit-card"></i> Checkout
                                 </a>

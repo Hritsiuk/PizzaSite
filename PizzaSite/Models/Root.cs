@@ -10,6 +10,7 @@ namespace PizzaSite.Models
         public string name { get; set; }
         public int count { get; set; }
         public int idt { get; set; }
+        public string componentid { get; set; }
     }
 
     public struct Root

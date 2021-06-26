@@ -15,7 +15,8 @@ namespace PizzaSite.Data
         public DbSet<Salad> Salad { get; set; }
         public DbSet<Drinks> Drink { get; set; } 
         public DbSet<Component> Component { get; set; }
-
+        
+        public DbSet<Comment> Commentaries { get; set; }
         public DbSet<Order> Orders { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)

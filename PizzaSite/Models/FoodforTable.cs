@@ -13,5 +13,7 @@ namespace PizzaSite.Models
 
         public double total { get; set; }
 
+        public Component component { get; set; }
+
     }
 }

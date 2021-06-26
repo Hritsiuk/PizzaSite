@@ -1,194 +1,51 @@
 ﻿
-@model PizzaSite.Models.Pizza
+@model ICollection<object>
+@{ Food food = (Food)Model.ToArray()[0];
+    List<Component> components = new List<Component>();
+    if (Model.ToArray()[1] != null)
+        components = (List<Component>)Model.ToArray()[1]; }
 <div id="container" class="content">
     <div class="container">
         <div id="notification"></div>
         <div id="column-right" class="hidden-xs hidden-sm">
+
             <div class="box">
                 <div class="box-heading">
-                    <span>Categories</span>
+                    <span>Categories </span>
                 </div>
                 <div class="box-content">
                     <ul class="box-category treemenu">
-                        <li><a href="pizza.html" class="active"><span>Pizza (10)</span></a></li>
-                        <li>
-                            <a href="japan.html"><span>Japan (17)</span></a>
-                            <ul>
-                                <li><a href="rolli.html"><span>Rolls (6)</span></a></li>
-                                <li><a href="teplie-rolli.html"><span>Warm rolls (3)</span></a></li>
-                                <li><a href="sushi.html"><span>Sushi (5)</span></a></li>
-                                <li><a href="spicy-sushi.html"><span>Spicy-sushi (3)</span></a></li>
-                            </ul>
-                        </li>
-                        <li><a href="drinks-dostavka.html"><span>Beverages (7)</span></a></li>
+                        <li><a asp-controller="Home" asp-action="PizzaV" class="active"><span>Pizza </span></a></li>
+                        <li><a asp-controller="Home" asp-action="Beverages"><span>Beverages </span></a></li>
                     </ul>
                 </div>
             </div>
 
-            <div id="banner0" class="banner clearfix">
-                <div class="item pull-left">
-                    <a href="http://conceptlogic.ru/">
-                        <img src="img/data-banners-banner-cl-2-255x382.jpg" alt="E-commerce solutions" title="E-commerce solutions">
-                    </a>
-                </div>
-            </div>
+     
 
-            <div class="box box-featured">
-                <div class="box-heading">
-                    <span>Featured</span>
-                </div>
 
-                <div class="box-content">
-                    <div class="box-product product-grid">
-                        <div class="item">
-                            <div class="image">
-                                <a href="margarita.html">
-                                    <img alt="Margarita" title="Margarita" src="img/data-pizza-margarita-80x80.jpg">
-                                </a>
-                            </div>
-
-                            <div class="caption">
-                                <div class="name">
-                                    <a href="margarita.html">Margarita</a>
-                                </div>
-
-                                <div class="price">
-                                    <div>
-                                        <span class="price-fixed">270.00 $</span>
-                                    </div>
-                                </div>
-
-                                <div class="cart">
-                                    <button class="btn btn-success" type="button" onclick="addToCart(&#39;44&#39;);">
-                                        <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
-                                    </button>
-                                </div>
-
-                                <div class="rating">
-                                    <div class="stars" title="Based on 3 reviews.">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>&nbsp;
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="image">
-                                <a href="margarita.html">
-                                    <img alt="Diablo" title="Diablo" src="img/data-pizza-pizza-diablo-80x80.jpg">
-                                </a>
-                            </div>
-
-                            <div class="caption">
-                                <div class="name">
-                                    <a href="margarita.html">Diablo</a>
-                                </div>
-
-                                <div class="price">
-                                    <div>
-                                        <span class="price-fixed">270.00 $</span>
-                                    </div>
-                                </div>
-
-                                <div class="cart">
-                                    <button class="btn btn-success" type="button" onclick="addToCart(&#39;6822&#39;);">
-                                        <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
-                                    </button>
-                                </div>
-
-                                <div class="rating">
-                                    <div class="stars" title="Based on 1 reviews.">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="image">
-                                <a href="margarita.html">
-                                    <img alt="Rolls Philadelphia" title="Rolls Philadelphia" src="img/data-rolls-rolls-filadelfia-80x80.jpg">
-                                </a>
-                            </div>
-
-                            <div class="caption">
-                                <div class="name">
-                                    <a href="margarita.html">Rolls Philadelphia</a>
-                                </div>
-
-                                <div class="price">
-                                    <div>
-                                        <span class="price-fixed">250.00 $</span>
-                                    </div>
-                                </div>
-
-                                <div class="cart">
-                                    <button class="btn btn-success" type="button" onclick="addToCart(&#39;6827&#39;);">
-                                        <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="image">
-                                <a href="margarita.html">
-                                    <img alt="Sushi with red caviar" title="Sushi with red caviar" src="img/data-rolls-sushi-ikra-80x80.jpg">
-                                </a>
-                            </div>
-
-                            <div class="caption">
-                                <div class="name">
-                                    <a href="margarita.html">Sushi with red caviar</a>
-                                </div>
-
-                                <div class="price">
-                                    <div>
-                                        <span class="price-fixed">80.00 $</span>
-                                    </div>
-                                </div>
-
-                                <div class="cart">
-                                    <button class="btn btn-success" type="button" onclick="addToCart(&#39;6836&#39;);">
-                                        <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div id="content">
             <ol class="breadcrumb">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="pizza.html">Pizza</a></li>
-                <li><a href="margarita.html">Margarita</a></li>
+                <li><a href="margarita.html">@food.name</a></li>
             </ol>
 
             <div class="product-info">
                 <div class="row">
                     <div class="col-md-4 popup-gallery">
                         <div class="image">
-                            <a href="img/data-pizza-margarita-640x640.jpg" title="Margarita" class="imagebox">
-                                <img src="@Model.img" title="Margarita" alt="Margarita" id="image">
+                            <a href="@food.img" title="Margarita" class="imagebox">
+                                <img src="@food.img" title="Margarita" alt="Margarita" id="image">
                             </a>
                         </div>
 
                         <div class="share" style="margin-top: 30px">
                             <!-- Share Button BEGIN 'share.pluso.ru' -->
                             <script type="text/javascript">
-    (function () {
+                                (function () {
                                     if (window.pluso) if (typeof window.pluso.start == "function") return;
                                     if (window.ifpluso == undefined) {
                                         window.ifpluso = 1;
@@ -198,7 +55,8 @@
                                         var h = d[g]('body')[0];
                                         h.appendChild(s);
                                     }
-                                })();</script>
+                                })();
+                            </script>
                             <div class="pluso" data-background="transparent" data-options="small,square,line,horizontal,nocounter,theme=04" data-services="vkontakte,facebook,twitter,google,odnoklassniki,pinterest,tumblr">
                                 <div class="pluso-010011000101-04">
                                     <span class="pluso-wrap" style="background:transparent"><a href="margarita.html" title="ВКонтакте" class="pluso-vkontakte"></a><a href="margarita.html" title="Facebook" class="pluso-facebook"></a><a href="margarita.html" title="Twitter" class="pluso-twitter"></a><a href="margarita.html" title="Google+" class="pluso-google"></a><a href="margarita.html" title="Одноклассники" class="pluso-odnoklassniki"></a><a href="margarita.html" title="Pinterest" class="pluso-pinterest"></a><a href="margarita.html" title="Tumblr" class="pluso-tumblr"></a><a href="http://pluso.ru/" class="pluso-more"></a></span>
@@ -209,95 +67,22 @@
                     </div>
 
                     <div class="col-md-8 product-center clearfix">
-                        <h1>@Model.name</h1>
-                       
+                        <h1>@food.name</h1>
+                        
                         <div class="options">
                             <h4>Available Options</h4>
-                            <div id="option-237" class="option form-group">
-                                <label>
-                                    <span class="required">*</span>Pizza weight:
-                                </label><br>
-                                <label for="option-value-17" class="radio-inline">
-                                    <img src="img/data-options-400g-50x50.png" alt="400 grs"><br>
-                                    <input type="radio" name="option[237]" value="17" id="option-value-17">
-                                    400 grs
-                                </label>
-                                <label for="option-value-18" class="radio-inline">
-                                    <img src="img/data-options-800g-50x50.png" alt="800 grs +60.00 $"><br>
-                                    <input type="radio" name="option[237]" value="18" id="option-value-18">
-                                    800 grs
-                                    <small>(+60.00 $)</small>
-                                </label>
-                                <label for="option-value-19" class="radio-inline">
-                                    <img src="img/data-options-1000g-50x50.png" alt="1200 grs +180.00 $"><br>
-                                    <input type="radio" name="option[237]" value="19" id="option-value-19">
-                                    1200 grs
-                                    <small>(+180.00 $)</small>
-                                </label>
-                            </div>
-
-                            <div id="option-238" class="option form-group">
-                                <label>
-                                    Free sauce:
-                                </label><br>
-
-                                <select name="option[238]">
-                                    <option value="0"> --- Please Select --- </option>
-                                    <option value="20">cheese</option>
-                                    <option value="21">garlic</option>
-                                </select>
-                            </div>
-
-                            <div id="option-243" class="option form-group">
-                                <label>
-                                    Additional sauce:
-                                </label><br>
-
-                                <label for="option-value-32" class="checkbox-inline">
-                                    <input type="checkbox" name="option[243][]" value="32" id="option-value-32"> Сurry
-                                    <small>(+20.00 $)</small>
-                                </label>
-                                <label for="option-value-33" class="checkbox-inline">
-                                    <input type="checkbox" name="option[243][]" value="33" id="option-value-33"> Barbecue
-                                    <small>(+20.00 $)</small>
-                                </label>
-                            </div>
-
                             <div id="option-239" class="option form-group">
                                 <label>
                                     Edges:
                                 </label><br>
-
-                                <label for="option-value-22" class="radio-inline">
-                                    <img src="img/data-options-bortik-semga-50x50.jpg" alt="with salmon +50.00 $"><br>
-                                    <input type="radio" name="option[239]" value="22" id="option-value-22">
-                                    with salmon
-                                    <small>(+50.00 $)</small>
-                                </label>
-                                <label for="option-value-23" class="radio-inline">
-                                    <img src="img/data-options-bortik-sir-50x50.jpg" alt="with cheese +50.00 $"><br>
-                                    <input type="radio" name="option[239]" value="23" id="option-value-23">
-                                    with cheese
-                                    <small>(+50.00 $)</small>
-                                </label>
-                            </div>
-
-                            <div id="option-242" class="option form-group">
-                                <label>
-                                    Additional options:
-                                </label><br>
-
-                                <label for="option-value-29" class="checkbox-inline">
-                                    <input type="checkbox" name="option[242][]" value="29" id="option-value-29"> pizza in the shape of heart
-                                    <small>(+100.00 $)</small>
-                                </label>
-                                <label for="option-value-30" class="checkbox-inline">
-                                    <input type="checkbox" name="option[242][]" value="30" id="option-value-30"> extra cheese
-                                    <small>(+50.00 $)</small>
-                                </label>
-                                <label for="option-value-31" class="checkbox-inline">
-                                    <input type="checkbox" name="option[242][]" value="31" id="option-value-31"> hotter!
-                                </label>
+                                @foreach (Component c in components)
+                                {
+                                    <label class="radio-inline">
+                                        <img src="@c.img" alt="with salmon +50.00 $"><br>
+                                        <input type="radio" name="option[239]" value="1" onclick="Set('@c.Id')">
+                                        with @c.name
+                                        <small>(+@c.price $)</small>
+                                    </label>}
                             </div>
                         </div>
                     </div>
@@ -315,50 +100,46 @@
                                     <i class="fa fa-star-o"></i>&nbsp;
                                 </div>
 
-                                <div class="add-review">
-                                    <a class="btn btn-link btn-sm" onclick="$(&#39;a[href=\&#39;#tab-review\&#39;]&#39;).trigger(&#39;click&#39;);">
-                                        <i class="fa fa-pencil-square-o"></i> Write a review
-                                    </a>
-                                </div>
+                                
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="price">
                                 <div>
-                                    <span class="price-fixed">270.00 $</span>
+                                    <span class="price-fixed">@food.price $</span>
                                 </div>
                             </div>
 
                             <div class="text-center" style="font-size: 12px"></div>
                         </div>
-
+                        <script>
+                            let s = "";
+                            function Set(str) {
+                                s = str;
+                                console.log(s);
+                            }
+                            function Get() {
+                                console.log(s);
+                                return s;
+                            }
+                        </script>
                         <div class="col-md-4">
                             <div class="cart">
                                 <div class="add-to-cart clearfix" style="margin-top: 20px">
                                     <!--span class="help-block">Qty:</span-->
                                     <div class="input-group input-group-lg">
-                                        <input type="text" name="quantity" class="form-control" size="2" value="1">
                                         <span class="input-group-btn">
-                                            <button type="button" id="button-cart" class="btn btn-success">
+                                            <button id="button-cart" class="btn btn-success" onclick="checkCookie2('@food.Id', 1, '@ViewBag.idt' , 1,@food.price,Get())">
                                                 <i class="fa fa-shopping-cart"></i> &nbsp;
                                                 Add to Cart
                                             </button>
                                         </span>
                                     </div>
-                                    <input type="hidden" name="product_id" size="2" value="44">
-                                </div>
-
-                                <div class="links">
-                                    <a class="btn btn-danger tooltip-right" title="" onclick="addToWishList(&#39;44&#39;);" data-original-title="Add to Wish List">
-                                        <i class="fa fa-heart-o"></i>
-                                    </a>
-                                    <a class="btn btn-link" onclick="addToCompare(&#39;44&#39;);">
-                                        <i class="fa fa-files-o"></i>&nbsp;Add to Compare
-                                    </a>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -462,194 +243,65 @@
 
                         </div>
                         <!-- $end -->
-                        <div class="panel panel-default form-review">
-                            <div class="panel-heading" id="review-title">Write a review</div>
-                            <div class="panel-body">
-                                <div class="form-group">
-                                    <label for="review-name">Your Name:</label>
-                                    <input type="text" id="review-name" class="form-control" name="name" placeholder="Your Name:">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="review-text">Your Review:</label>
-                                    <textarea id="review-name" class="form-control" placeholder="Your Review:" name="text" rows="5"></textarea>
-                                    <p class="help-block"><small><span style="color: #FF0000;">Note:</span> HTML is not translated!</small></p>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Rating:</label>
-                                    <br>
-
-                                    <!--span>Bad</span-->
-                                    <div class="btn-group btn-group-sm" data-toggle="buttons">
-                                        <label class="btn btn-red">
-                                            <input type="radio" name="rating" value="1"> 1
-                                        </label>
-                                        <label class="btn btn-scarlet">
-                                            <input type="radio" name="rating" value="2"> 2
-                                        </label>
-                                        <label class="btn btn-orange">
-                                            <input type="radio" name="rating" value="3"> 3
-                                        </label>
-                                        <label class="btn btn-yellow">
-                                            <input type="radio" name="rating" value="4"> 4
-                                        </label>
-                                        <label class="btn btn-green">
-                                            <input type="radio" name="rating" value="5"> 5
-                                        </label>
+                        <form asp-controller="Item" asp-action="Detail" method="post">
+                            <div class="panel panel-default form-review">
+                                <div class="panel-heading" id="review-title">Write a review</div>
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label for="review-name">Your Name:</label>
+                                        <input type="text" id="review-name" class="form-control" name="name" placeholder="Your Name:">
                                     </div>
-                                    <!--span>Good</span-->
-                                </div>
+                                    <input type="text" hidden="hidden" name="Id_tovar" value="@food.Id" />
 
-                                <div class="form-group">
-                                    <lable>Enter the code in the box below:</lable>
-                                    <br>
-                                    <input type="text" name="captcha" value="">
-                                    <img src="js/index.html" alt="" id="captcha">
-                                </div>
+                                    <div class="form-group">
+                                        <label for="review-text">Your Review:</label>
+                                        <textarea id="review-name" class="form-control" placeholder="Your Review:" name="description" rows="5"></textarea>
+                                        <p class="help-block"><small><span style="color: #FF0000;">Note:</span> HTML is not translated!</small></p>
+                                    </div>
 
-                                <div class="form-group">
-                                    <a id="button-review" class="btn btn-warning">Continue</a>
+                                    <div class="form-group">
+                                        <label>Rating:</label>
+                                        <br>
+
+                                        <!--span>Bad</span-->
+                                        <div class="btn-group btn-group-sm" data-toggle="buttons">
+                                            <label class="btn btn-red">
+                                                <input type="radio" name="rating" value="1"> 1
+                                            </label>
+                                            <label class="btn btn-scarlet">
+                                                <input type="radio" name="rating" value="2"> 2
+                                            </label>
+                                            <label class="btn btn-orange">
+                                                <input type="radio" name="rating" value="3"> 3
+                                            </label>
+                                            <label class="btn btn-yellow">
+                                                <input type="radio" name="rating" value="4"> 4
+                                            </label>
+                                            <label class="btn btn-green">
+                                                <input type="radio" name="rating" value="5"> 5
+                                            </label>
+                                        </div>
+                                        <!--span>Good</span-->
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button id="button-review" type="submit" class="btn btn-warning">Continue</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
 
-            <div class="box box-bestseller">
-                <div class="box-heading">
-                    <span>Bestsellers</span>
-                </div>
-                <div class="box-content">
 
-                    <div class="box-product product-grid">
-                        <div class="item">
-                            <div class="image">
-                                <a href="margarita.html">
-                                    <img src="img/data-drinks-j7-240x240.jpg" title="Juice J7" alt="Juice J7">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <div class="name">
-                                    <a href="margarita.html">Juice J7</a>
-                                </div>
-
-                                <div class="price">
-                                    <div>
-                                        <span class="price-fixed">95.00 $</span>
-                                    </div>
-                                </div>
-
-                                <div class="cart">
-                                    <button class="btn btn-success" type="button" onclick="addToCart(&#39;6845&#39;);">
-                                        <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="image">
-                                <a href="margarita.html">
-                                    <img src="img/data-drinks-sok-240x240.jpg" title="Juice Fruit Garden" alt="Juice Fruit Garden">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <div class="name">
-                                    <a href="margarita.html">Juice Fruit Garden</a>
-                                </div>
-
-                                <div class="price">
-                                    <div>
-                                        <span class="price-fixed">55.00 $</span>
-                                    </div>
-                                </div>
-
-                                <div class="cart">
-                                    <button class="btn btn-success" type="button" onclick="addToCart(&#39;6844&#39;);">
-                                        <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="image">
-                                <a href="margarita.html">
-                                    <img src="img/data-pizza-siri-240x240.jpg" title="4 cheeses" alt="4 cheeses">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <div class="name">
-                                    <a href="margarita.html">4 cheeses</a>
-                                </div>
-
-                                <div class="price">
-                                    <div>
-                                        <span class="price-fixed">270.00 $</span>
-                                    </div>
-                                </div>
-
-                                <div class="cart">
-                                    <button class="btn btn-success" type="button" onclick="addToCart(&#39;6815&#39;);">
-                                        <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
-        <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-        <script type="text/javascript">
-    $(document).ready(function () {
-                $('.imagebox').magnificPopup({
-                    type: 'image',
-                    gallery: {
-                        enabled: true,
-                        preload: [1, 3]
-                    }
-                });
-            });</script>
+  
 
-        <script type="text/javascript">
-    $(document).on('click', '#button-cart', function () {
-                $.ajax({
-                    url: 'index.php?route=checkout/cart/add',
-                    type: 'post',
-                    data: $('.product-info input[type=\'text\'], .product-info input[type=\'hidden\'], .product-info input[type=\'radio\']:checked, .product-info input[type=\'checkbox\']:checked, .product-info select, .product-info textarea'),
-                    dataType: 'json',
-                    success: function (json) {
-                        $('.alert').remove();
+     
 
-                        if (json['error']) {
-                            if (json['error']['option']) {
-                                for (i in json['error']['option']) {
-                                    $('#option-' + i).after('<div class="alert alert-danger">' + json['error']['option'][i] + '</div>');
-                                }
-                            }
-                        }
-
-                        if (json['success']) {
-                            $('#notification').html('<div class="alert alert-success" style="display: none;">' + json['success'] + '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>');
-
-                            $('.alert-success').fadeIn('slow');
-
-                            $('#cart-total').html(json['total']);
-
-                            $('html, body').animate({ scrollTop: 0 }, 'slow');
-                        }
-                    }
-                });
-            });</script>
-
-        <script type="text/javascript" src="js/ajaxupload.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.css">
-        <script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>
+     
     </div>
 </div>
-<script type="text/javascript" charset="UTF-8" async="" src="js/pluso-like.js"></script>

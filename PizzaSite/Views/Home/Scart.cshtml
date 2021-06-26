@@ -1,5 +1,5 @@
 ﻿@using PizzaSite.Models
-@model ICollection<Food>
+@model ICollection<FoodforTable>
 @{
     ViewData["Title"] = "Shoping cart";
 }
@@ -36,39 +36,39 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (Food item in Model)
+                            @foreach (FoodforTable item in Model)
                             {
                                
                                 <tr>
                                     <td class="image">
                                         <a href="margarita.html">
-                                            <img src="@item.img" width="60" height="60" alt="Margarita" title="Margarita">
+                                            <img src="@item.food.img" width="60" height="60" alt="Margarita" title="Margarita">
                                         </a>
                                     </td>
                                     <td class="name">
-                                        <a href="margarita.html">@item.name</a>
+                                        <a href="margarita.html">@item.food.name</a>
                                         <div>
                                             - <small>Pizza weight: 1200 grs</small><br>
                                         </div>
                                     </td>
-                                    <td class="model">@item.name</td>
+                                    <td class="model">@item.food.name</td>
                                     <td class="quantity">
                                         <div class="input-group">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-success" type="image" onclick="del(this,'@item.Id')" alt="Update" title="Update"><i class="fa fa-refresh"></i></button>
+                                                <a class="btn btn-success" onclick="addcount('@item.food.Id', this.parentElement.parentElement.children[1].value,@item.food.price, this)" title="Update"><i class="fa fa-refresh"></i></a>
                                             </span>
 
-                                            <input class="form-control" type="text" name="quantity[44:YToxOntpOjIzNztzOjI6IjE5Ijt9]" value="1" size="1">
-
+                                            <input   class="form-control" type="text" name="quantity" value="@item.count" size="1">
+                      
                                             <span class="input-group-btn">
-                                                <a class="btn btn-danger"  onclick="del(this,'@item.Id')" title="Remove">
+                                                <a class="btn btn-danger"  onclick="del(this,'@item.food.Id',@item.food.price)" title="Remove">
                                                     <i class="fa fa-times"></i>
                                                 </a>
                                             </span>
                                         </div>
                                     </td>
-                                    <td class="price">
-                                        @item.price $
+                                    <td class="price" id="price">
+                                        @item.food.price $
                                     </td>
 
                                 </tr>
@@ -82,30 +82,7 @@
                 <div class="cart-total">
                     <table id="total">
                         <tbody>
-                            <tr>
-                                <td class="text-right">
-                                    <strong>Sub-Total:</strong>
-                                </td>
-                                <td class="text-right">
-                                    450.00 $
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-right">
-                                    <strong>Eco Tax (-2.00):</strong>
-                                </td>
-                                <td class="text-right">
-                                    2.00 $
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-right">
-                                    <strong>НДС 18%:</strong>
-                                </td>
-                                <td class="text-right">
-                                    81.00 $
-                                </td>
-                            </tr>
+                         
                             <tr>
                                 <td class="text-right">
                                     <strong>Total:</strong>

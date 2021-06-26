@@ -1,7 +1,7 @@
 ﻿@using PizzaSite.Models
-@model IQueryable<Drinks>
+@model IQueryable<Salad>
 @{
-    ViewData["Title"] = "Beverages";
+    ViewData["Title"] = "Salad";
 }
 <div id="container" class="content">
     <div class="container">
@@ -9,9 +9,10 @@
 
         <div id="content">
             <ol class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="drinks-dostavka.html">Beverages</a></li>
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-controller="Home" asp-action="Beverages">Beverages</a></li>
             </ol>
+            
 
             <div class="category-info clearfix">
                 <h1>Beverages</h1>
@@ -26,26 +27,9 @@
                     </div>
                 </div>
 
-                <div class="product-compare">
-                    <a class="btn btn-default btn-sm" href="index.html" id="compare-total">
-                        <i class="fa fa-files-o"></i> Product Compare (0)
-                    </a>
-                </div>
 
-                <div class="limit">
-                    <div class="dropdown">
-                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="limit-goods" data-toggle="dropdown">
-                            <i class="fa fa-level-down"></i>&nbsp;Show:&nbsp;<span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="limit-goods">
-                            <li class="disabled"><a tabindex="-1" href="#">20</a></li>
-                            <li><a tabindex="-1" href="#">25</a></li>
-                            <li><a tabindex="-1" href="#">50</a></li>
-                            <li><a tabindex="-1" href="#">75</a></li>
-                            <li><a tabindex="-1" href="#">100</a></li>
-                        </ul>
-                    </div>
-                </div>
+
+
 
                 <div class="sort">
                     <div class="dropdown">
@@ -69,7 +53,7 @@
 
             <div class="box-product product-grid">
 
-                @foreach (Drinks item in Model)
+                @foreach (Salad item in Model)
                 {
                     <div class="item">
                         <div class="image">
@@ -92,16 +76,17 @@
                             </div>
 
                             <div class="cart">
-                                <button class="btn btn-success" type="button" onclick="checkCookie('@item.Id', 1, 4, 1,@item.price)">
+                                <button class="btn btn-success" type="button" onclick="checkCookie('@item.Id', 1, 3, 1,@item.price)">
                                     <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
                                 </button>
+
 
                             </div>
                         </div>
                     </div>
 
                 }
-                </div>
+            </div>
 
             <div class="">
                 <div class="pagination">

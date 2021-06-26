@@ -21,13 +21,14 @@ namespace PizzaSite.Controllers
             db = context;
             dataManager = datamanager;
 
-
-         
+            
         }
 
         public IActionResult Index()
         {         
             
+
+
             return View();
         }
      
@@ -38,6 +39,11 @@ namespace PizzaSite.Controllers
 
             return View(dataManager.Pizza.GetPizzaItems());
         }
+        public IActionResult Salad()
+        {
+
+            return View(dataManager.Salad.GetSaladItems());
+        }
         public IActionResult Beverages()
         {
 
@@ -47,30 +53,41 @@ namespace PizzaSite.Controllers
      
         public IActionResult Scart(string json)
         {
-            
 
-            List<Food> list = new List<Food>();
+            List<FoodforTable> list2 = new List<FoodforTable>();
+            
             try
             {
-                
+               
                 Root myclass = JsonConvert.DeserializeObject<Root>(json);
                 foreach (Arr id in myclass.arr)
                 {
+                    FoodforTable f = new FoodforTable();
                     switch (id.idt)
                     {
                         case 2:
-                             list.Add(dataManager.Pizza.GetPizzaItemById(new Guid(id.name)));
+                            f.food= dataManager.Pizza.GetPizzaItemById(new Guid(id.name));
                             break;
                         case 3:
-                            list.Add(dataManager.Salad.GetSaladItemById(new Guid(id.name)));
+                            f.food = dataManager.Salad.GetSaladItemById(new Guid(id.name));
                             break;
                         case 4:
-                            list.Add(dataManager.Drinks.GetDrinksItemById(new Guid(id.name)));
+                            f.food = dataManager.Drinks.GetDrinksItemById(new Guid(id.name));
                             break;
                         default:
                             break;
                     }
+                    f.count = id.count;
+                        f.total = (id.count * f.food.price);
+                    if (id.componentid != "")
+                    {
+                        f.component = dataManager.Component.GetComponentsItemById(new Guid(id.componentid));
+                        f.total +=(id.count * f.component.price);
+                    }
+                    
                    
+                    list2.Add(f);
+
                 }
 
             }
@@ -79,7 +96,7 @@ namespace PizzaSite.Controllers
                
             }
 
-            return View(list);
+            return View(list2);
         }
 
         public IActionResult About()
@@ -94,27 +111,35 @@ namespace PizzaSite.Controllers
         [HttpGet]
         public IActionResult Checkout(string json2)
         {
-          
-            List<Food> list = new List<Food>();
+            double total = 0;
+            List<FoodforTable> list2 = new List<FoodforTable>();
+
             try
             {
+
                 Root myclass = JsonConvert.DeserializeObject<Root>(json2);
                 foreach (Arr id in myclass.arr)
                 {
+                    FoodforTable f = new FoodforTable();
                     switch (id.idt)
                     {
                         case 2:
-                            list.Add(dataManager.Pizza.GetPizzaItemById(new Guid(id.name)));
+                            f.food = dataManager.Pizza.GetPizzaItemById(new Guid(id.name));
                             break;
                         case 3:
-                            list.Add(dataManager.Salad.GetSaladItemById(new Guid(id.name)));
+                            f.food = dataManager.Salad.GetSaladItemById(new Guid(id.name));
                             break;
                         case 4:
-                            list.Add(dataManager.Drinks.GetDrinksItemById(new Guid(id.name)));
+                            f.food = dataManager.Drinks.GetDrinksItemById(new Guid(id.name));
                             break;
                         default:
                             break;
                     }
+                    f.count = id.count;
+                    f.total = id.count * f.food.price;
+                    total += f.total;
+                    list2.Add(f);
+
                 }
 
             }
@@ -122,12 +147,21 @@ namespace PizzaSite.Controllers
             {
 
             }
-            return View(list);
+            ViewBag.total = total;
+            return View(list2);
         }
 
-       
+        [HttpPost]
+        public IActionResult Checkout(Order order)
+        {
+            Order temp = order;
+            temp.Id = new Guid();
+            db.Orders.Add(temp);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+            [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

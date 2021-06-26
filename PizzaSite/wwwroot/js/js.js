@@ -9,7 +9,7 @@ function setCookie(cname,cvalue,exdays) {
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
-    console.log(decodedCookie);
+    
     var ca = decodedCookie.split(';');
     for(var i = 0; i < ca.length; i++) {
       var c = ca[i];
@@ -21,14 +21,73 @@ function getCookie(cname) {
       }
     }
     return "";
-  }
-  
-function checkCookie(pname,pcount, pidt,count,money) {
+}
+function has(arr,elem) {
+
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i].name === elem) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+function addcount(pname,pcount,money) {
+
+    
+
+    
+    
+   
+    var user = getCookie("username");
+    var json;
+ 
+        json = JSON.parse(user);
+
+    let temp = 0;
+    console.log(pcount);
+    for (var i = 0; i < json.arr.length; i++) {
+        if (json.arr[i].name === pname) {
+            
+            temp = json.arr[i].count;
+           
+
+            json.arr[i].count = pcount;
+            console.log(json.arr[i].count);
+        }
+     }
+        user = JSON.stringify(json);
+    minuscount(-(pcount - temp));
+    minussum(-((pcount - temp) * money))
+    console.log(pcount - temp);
+    if (user != "" && user != null) {
+        setCookie("username", user, 30);
+
+
+    }
+}
+
+function checkCookie(pname , pcount, pidt,count,money) {
     var user = getCookie("username");
     var json;
     if (user != "") {
         json = JSON.parse(user);
-        json.arr.push({ name: pname, count: pcount, idt: pidt});
+
+        if (!has(json.arr, pname)) {
+
+            json.arr.push({ name: pname, count: pcount, idt: pidt, componentid: ""});
+        }
+        else {
+            for (var i = 0; i < json.arr.length; i++) {
+                if (json.arr[i].name === pname) {
+                    json.arr[i].count += pcount;
+                }
+            }
+        }
+
+
+
         user = JSON.stringify(json);
 
     }
@@ -40,24 +99,17 @@ function checkCookie(pname,pcount, pidt,count,money) {
             arr: []
         };
 
-        user.arr.push({ name: pname, count: pcount, idt: pidt});
+        user.arr.push({ name: pname, count: pcount, idt: pidt, componentid: ""});
         json = JSON.stringify(user);
 
        
 
         user = json;
     }
-    settotal(count, money)
-    {
-
-    }
+    settotal(count, money);
+  
        
-        console.log(json);
-       
-        
-        
-        
-        console.log(user);
+     
         
         if (user != "" && user != null) {
             setCookie("username", user, 30);
@@ -67,18 +119,74 @@ function checkCookie(pname,pcount, pidt,count,money) {
     
 }
 
+function checkCookie2(pname, pcount, pidt, count, money,pcomponentid) {
+    var user = getCookie("username");
+    var json;
+    if (user != "") {
+        json = JSON.parse(user);
 
-function delelementbyid(id)
+        if (!has(json.arr, pname)) {
+
+            json.arr.push({ name: pname, count: pcount, idt: pidt, componentid: pcomponentid});
+        }
+        else {
+            for (var i = 0; i < json.arr.length; i++) {
+                if (json.arr[i].name === pname) {
+                    json.arr[i].count += pcount;
+                }
+            }
+        }
+
+
+
+        user = JSON.stringify(json);
+
+    }
+    else {
+
+
+        user = {
+
+            arr: []
+        };
+
+        user.arr.push({ name: pname, count: pcount, idt: pidt, componentid: pcomponentid });
+        json = JSON.stringify(user);
+
+
+
+        user = json;
+    }
+    settotal(count, money);
+
+
+
+
+    if (user != "" && user != null) {
+        setCookie("username", user, 30);
+
+
+    }
+
+}
+
+
+
+function delelementbyid(id,money=0)
 {
     
     var temp = getCookie("username");
     var temp2 = JSON.parse(temp);
-    for (var i = 0; i <3; i++) {
+    for (var i = 0; i < temp2.arr.length; i++) {
 
-        console.log(temp2);
-        console.log(temp2.arr[i]);
-        if (temp2?.arr[i]?.name === id) {
-           
+
+        
+        if (temp2?.arr[i]?.name === id ) {
+            if (temp2?.arr[i]?.count != 0) {
+                minussum(money * temp2?.arr[i]?.count);
+            }
+            
+            minuscount(temp2?.arr[i]?.count);
             temp2.arr.splice(i, 1);
             i--;
         }
@@ -86,19 +194,22 @@ function delelementbyid(id)
     }
    
     var user = JSON.stringify(temp2);
-    console.log(user);
+    
     setCookie("username", user, 30);
 }
 
-function del(btn,id) {
+function del(btn,id,money) {
 
-
-
+   
+    
     btn.parentElement.parentElement.parentElement.parentElement.remove();
-    delelementbyid(id);
+    delelementbyid(id,money);
 }
 
 function redact() {
+
+  
+
     var user = getCookie("total");
     var json=JSON.parse(user);
 
@@ -135,18 +246,134 @@ function settotal(count, money) {
     }
 
 
-    console.log(json);
-
-
-
-
-    console.log(user);
+  
 
     if (user != "" && user != null) {
         setCookie("total", user, 30);
         redact();
 
     }
+
+   
+
+}
+function minustotal(count, money) {
+    var user = getCookie("total");
+    var json;
+    if (user != "") {
+        json = JSON.parse(user);
+        json.arr2[0].money -= money;
+        json.arr2[0].count -= count;
+
+
+        user = JSON.stringify(json);
+
+    }
+    else {
+
+
+        user = {
+
+            arr2: []
+        };
+
+        user.arr2.push({ count: count, money: money });
+        json = JSON.stringify(user);
+
+
+
+        user = json;
+    }
+
+
+  
+
+    if (user != "" && user != null) {
+        setCookie("total", user, 30);
+        redact();
+
+    }
+
+
+
+}
+function minussum(money) {
+    var user = getCookie("total");
+    var json;
+    if (user != "") {
+        json = JSON.parse(user);
+        json.arr2[0].money -= money;
+        
+
+
+        user = JSON.stringify(json);
+
+    }
+    else {
+
+
+        user = {
+
+            arr2: []
+        };
+
+        user.arr2.push({ count: count, money: money });
+        json = JSON.stringify(user);
+
+
+
+        user = json;
+    }
+
+
+
+
+    if (user != "" && user != null) {
+        setCookie("total", user, 30);
+        redact();
+
+    }
+
+
+
+}
+function minuscount(count) {
+    var user = getCookie("total");
+    var json;
+    if (user != "") {
+        json = JSON.parse(user);
+      
+        json.arr2[0].count -= count;
+
+
+        user = JSON.stringify(json);
+
+    }
+    else {
+
+
+        user = {
+
+            arr2: []
+        };
+
+        user.arr2.push({ count: count, money: money });
+        json = JSON.stringify(user);
+
+
+
+        user = json;
+    }
+
+
+  
+
+    if (user != "" && user != null) {
+        setCookie("total", user, 30);
+        redact();
+
+    }
+
 
 
 }

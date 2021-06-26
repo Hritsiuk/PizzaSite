@@ -1,5 +1,5 @@
 ﻿@using PizzaSite.Models
-@model ICollection<Food>
+@model ICollection<FoodforTable>
 @{
     ViewData["Title"] = "Checkout";
 }
@@ -20,7 +20,7 @@
             </div>
 
             <div class="checkout panel-group">
-                <form>
+                <form asp-controller="Home" asp-action="Checkout" method="post">
                     <div id="payment-method" class="panel panel-default">
                         <div class="checkout-heading panel-heading">Step 1: Adress</div>
                         <div class="checkout-content panel-body">
@@ -29,7 +29,7 @@
 
                             <div class="form-group">
                                 <label>Add adress</label>
-                                <textarea name="comment" class="form-control" rows="1"></textarea>
+                                <textarea  name="adress" class="form-control" rows="1"></textarea>
                             </div>
 
 
@@ -45,7 +45,7 @@
 
                             <div class="form-group">
                                 <label>Add number</label>
-                                <textarea name="comment" class="form-control" rows="1"></textarea>
+                                <textarea name="phonenumber" class="form-control" rows="1"></textarea>
                             </div>
 
 
@@ -83,6 +83,9 @@
                         <div class="checkout-heading panel-heading">Step 4: Confirm Order</div>
                         <div class="checkout-content panel-body" style="display: none">
                             <div class="checkout-product table-responsive">
+
+                                <input type="text" name="jfoods" id="jfoods" hidden="hidden" />
+                                <input type="number" name="totalprice"  hidden="hidden" value="@ViewBag.total" />
                                 <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
@@ -93,60 +96,55 @@
                                             <th class="total">Total</th>
                                         </tr>
                                     </thead>
-
                                     <tbody>
-                                        <tr>
-                                            <td class="name">
-                                                <a href="margarita.html">Margarita</a>
-                                                <br>
-                                                &nbsp;<small> — Pizza weight: 1200 grs</small>
-                                            </td>
-                                            <td class="model">Маргарита</td>
-                                            <td class="quantity">1</td>
-                                            <td class="price">$12.83</td>
-                                            <td class="total">$12.83</td>
-                                        </tr>
+
+
+                                        @foreach (FoodforTable item in Model)
+                                        {
+                                            <tr>
+                                                <td class="name">
+                                                    <a href="margarita.html">@item.food.name</a>
+                                                    <br>
+                                                    &nbsp;<small> — Pizza size:30 sm</small>
+                                                </td>
+                                                <td class="model">@item.food.name</td>
+                                                <td class="quantity">@item.count</td>
+                                                <td class="price">$@item.food.price</td>
+                                                <td class="total">$@item.total</td>
+                                            </tr>
+
+                                        }
+
+
                                     </tbody>
+
 
                                     <tfoot>
 
-                                        <tr>
-                                            <td colspan="4" class="price text-right">
-                                                <b>Sub-Total:</b>
-                                            </td>
-                                            <td class="total">$12.83</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="4" class="price text-right">
-                                                <b>Flat Shipping Rate:</b>
-                                            </td>
-                                            <td class="total">$0.14</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="4" class="price text-right">
-                                                <b>Eco Tax (-2.00):</b>
-                                            </td>
-                                            <td class="total">$0.11</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="4" class="price text-right">
-                                                <b>НДС 18%:</b>
-                                            </td>
-                                            <td class="total">$2.33</td>
-                                        </tr>
+
                                         <tr>
                                             <td colspan="4" class="price text-right">
                                                 <b>Total:</b>
                                             </td>
-                                            <td class="total">$15.42</td>
+                                            <td class="total">$@ViewBag.total</td>
                                         </tr>
                                     </tfoot>
                                 </table>
                             </div>
                             <br>
+                            <script>
+                                function l() {
+
+                                    document.getElementById('jfoods').value = getCookie("username").toString();
+
+                                    document.getElementById('submit3').click();
+                                }
+
+                            </script>
+                            <button type="submit"  hidden="hidden" id="submit3"></button>
                             <div class="payment">
                                 <div class="buttons">
-                                    <input type="button" value="Confirm Order" id="button-confirm" class="btn btn-warning">
+                                    <input type="button" onclick="l()" value="Confirm Order" id="button-confirm" class="btn btn-warning">
                                 </div>
                             </div>
                         </div>
